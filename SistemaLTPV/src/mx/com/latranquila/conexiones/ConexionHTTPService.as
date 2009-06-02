@@ -1,4 +1,4 @@
-package mx.com.conexiones
+package mx.com.latranquila.conexiones
 {
 	public class ConexionHTTPService
 	{
