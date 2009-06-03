@@ -56,6 +56,7 @@ package mx.com.latranquila.consultas
 						}
 					respuesta.addItem(obj_a); 	
 				}
+				
 				dispatchEvent(new SqlEvents("query_listo",respuesta,"",true));
 			}
 			Desconectar();
