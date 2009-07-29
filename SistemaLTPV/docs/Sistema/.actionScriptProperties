@@ -9,6 +9,7 @@
 <sourceAttachmentPath/>
 </compiler>
 <applications>
+<application path="Kingnare.mxml"/>
 <application path="LaTranquilaLTV.mxml"/>
 </applications>
 <modules/>
