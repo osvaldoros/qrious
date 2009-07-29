@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="272" height="141" 
+	layout="absolute" 
+	title="Login" 
+	showCloseButton="true" 
+	close="closeWindow();"
+ 	creationComplete="centerWindow()">
+ 	
+		<mx:Button x="188" y="74" label="Login" width="70"/>
+		<mx:Label x="18" y="18" text="Usuario :"/>
+		<mx:TextInput x="77" y="16" width="181"/>
+		<mx:Label x="9" y="46" text="Password :"/>
+		<mx:TextInput x="77" y="44" width="181" displayAsPassword="true"/>
+	
+	<mx:Script>
+        <![CDATA[
+            import mx.managers.PopUpManager;
+            public function centerWindow():void{
+            	PopUpManager.centerPopUp(this);
+            }
+            
+            public function closeWindow():void{
+            	PopUpManager.removePopUp(this);
+            }
+       ]]>
+       
+	</mx:Script>
+	
+</mx:TitleWindow>	
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	width="756" height="394" 
+	showCloseButton="true" 
+	close="closeWindow();"
+ 	creationComplete="centerWindow()" title="Datos Generales del Cliente">
+ 	
+		<mx:Label x="69" y="40" text="Titular :" textAlign="right"/>
+		<mx:TextInput x="126" y="38" width="247" text="Carlos Arturo Marquez Montejano"/>
+		<mx:Label x="48" y="12" text="ID Cliente :" textAlign="right"/>
+		<mx:TextInput x="126" y="10" width="90" text="LT39651017"/>
+		<mx:Label x="53" y="70" text="2° Titular :" textAlign="right"/>
+		<mx:TextInput x="126" y="68" width="247"/>
+		<mx:Label x="54" y="100" text="Domicilio :" textAlign="right"/>
+		<mx:TextInput x="126" y="98" width="247"/>
+		<mx:Label x="62" y="130" text="Colonia :" textAlign="right"/>
+		<mx:TextInput x="126" y="128" width="247"/>
+		<mx:Label x="53" y="294" text="Particular :" textAlign="right"/>
+		<mx:Label x="43" y="322" text="Secundario :" textAlign="right"/>
+		<mx:TextInput x="180" y="293" width="89" text="36325525"/>
+		<mx:TextInput x="180" y="321" width="89" text="36325525"/>
+		<mx:TextInput x="126" y="321" width="50" text="01333"/>
+		<mx:TextInput x="525" y="38" width="197" text="carlos@randomestudio.com"/>
+		<mx:TextInput x="525" y="126" width="93" text="MAMC770718"/>
+		<mx:TextInput x="621" y="126" width="41" text="2K0"/>
+		<mx:Label x="473" y="128" text="R.F.C.:" textAlign="right"/>
+		<mx:TextInput x="126" y="293" width="50" text="01333"/>
+		<mx:Label x="470" y="40" text="E-Mail :" textAlign="right"/>
+		<mx:Label x="393" y="70" text="Fecha de Operación :" textAlign="right"/>
+		<mx:Label x="397" y="100" text="Tipo de Calendario :" textAlign="right"/>
+		<mx:Label x="80" y="157" text="C.P. :" textAlign="right"/>
+		<mx:TextInput x="125" y="157" width="51" maxChars="5" text="45190"/>
+		<mx:Label x="64" y="185" text="Ciudad :" textAlign="right"/>
+		<mx:TextInput x="125" y="185" width="144" maxChars="5"/>
+		<mx:Label x="80" y="243" text="Pais :" textAlign="right"/>
+		<mx:TextInput x="125" y="243" width="144" maxChars="5"/>
+		<mx:Label x="66" y="213" text="Estado :" textAlign="right"/>
+		<mx:TextInput x="125" y="213" width="144" maxChars="5"/>
+	
+	<mx:Script>
+        <![CDATA[
+            import mx.managers.PopUpManager;
+            public function centerWindow():void{
+            	PopUpManager.centerPopUp(this);
+            }
+            
+            public function closeWindow():void{
+            	PopUpManager.removePopUp(this);
+            }
+       ]]>
+       
+	</mx:Script>
+	<mx:DateField x="525" y="68" width="197"/>
+	<mx:ComboBox x="525" y="98" width="197"></mx:ComboBox>
+	<mx:DataGrid x="525" y="156" height="156" width="197">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Contratos" dataField="col1"/>
+			<mx:DataGridColumn headerText="Unidades" dataField="col2"/>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:Label x="127" y="272" text="Teléfonos"/>
+	<mx:Button x="655" y="320" label="Aceptar" click="closeWindow();"/>
+	
+</mx:TitleWindow>
