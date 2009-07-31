@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="440" height="233" 
+	layout="absolute" 
+	showCloseButton="true" 
+	close="closeWindow();"
+ 	creationComplete="centerWindow()" title="Depósito de unidades a renta">
+ 	
+	<mx:Script>
+        <![CDATA[
+            import mx.managers.PopUpManager;
+            public function centerWindow():void{
+            	PopUpManager.centerPopUp(this);
+            }
+            
+            public function closeWindow():void{
+            	PopUpManager.removePopUp(this);
+            }
+       ]]>
+       
+	</mx:Script>
+	<mx:Label x="205" y="67" text="Fecha de Entrada :"/>
+	<mx:Label x="212" y="95" text="Fecha de Salida :"/>
+	<mx:DateField x="322" y="65" width="106"/>
+	<mx:DateField x="322" y="93" width="106"/>
+	<mx:Button x="339" y="169" label="Aceptar" width="89"/>
+	<mx:Button x="239" y="169" label="Cancelar" width="89" click="closeWindow();"/>
+	<mx:DateChooser x="10" y="14"/>
+	<mx:RadioButtonGroup id="seleccion"/>
+	<mx:RadioButton x="322" y="10" groupName="seleccion" textAlign="left"/>
+	<mx:RadioButton x="322" y="36" groupName="seleccion" textAlign="left" width="17"/>
+	<mx:Label x="190" y="37" text="Rango de Semanas :"/>
+	<mx:Label x="190" y="10" text="Todas las Semanas :"/>
+	
+</mx:TitleWindow>	
+

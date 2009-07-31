@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Style source="style/style.css"/>
+	<mx:MenuBar x="0" y="0" width="100%" labelField="@label" itemClick="menuHandler(event);">
+		<mx:XMLList>
+    	    <menuitem label="Administración" >
+    	        <menuitem label="Administrar Usuarios" data="0"/>
+    	        
+    	    </menuitem>
+    	    
+    	    <menuitem label="Pantallas" >
+    	        <menuitem label="Login" data="1"/>
+    	        <menuitem label="Datos Generales" data="2"/>
+    	        <menuitem label="Validación" data="3"/>
+    	        <menuitem label="Alta Clientes No Propietarios" data="4"/>
+    	        <menuitem label="Menu Principal" data="5"/>
+    	        <menuitem label="Reservaciones General" data="6"/>
+    	        <menuitem label="Modulo Reservaciones General" data="7"/>
+    	    </menuitem>
+    	   
+    	   	<menuitem label="Ayuda">
+    	    	<menuitem label="Ayuda"  data="0"/>
+    	    	<menuitem label="Datos de Soporte"  data="0"/>
+    	    </menuitem>
+    	    <menuitem label="Salir">
+    	    	<menuitem label="Salir"  data="18"/>
+    	    </menuitem>
+    	</mx:XMLList>
+	</mx:MenuBar>
+	
+	
+	<mx:Script>
+        <![CDATA[
+        	import mx.events.MenuEvent;
+        	import mx.collections.ArrayCollection;
+        	import modulos.*;
+            import mx.managers.PopUpManager;
+           	
+           	[Bindable]
+           	private var _Modulos:ArrayCollection = new ArrayCollection([{_id:0,name:"Seleccionar",mdl:null},
+           																{_id:1,name:"Login",mdl:Login},
+           																{_id:2,name:"Datos Generales",mdl:DatosGenerales},
+           																{_id:3,name:"Validación",mdl:Validacion},
+           																{_id:4,name:"Alta Clientes No Propietarios",mdl:AltaClientesNoPropietarios},
+           																{_id:5,name:"Menu Principal",mdl:MainMenu},
+           																{_id:6,name:"Reservaciones General",mdl:ReservacionesGeneral},
+           																{_id:7,name:"Modulo Reservaciones General",mdl:ModuloReservacionesGeneral}	
+           	])
+            
+            public function menuHandler(event:MenuEvent):void
+            {	
+            	if(event.item.@data !=0){
+        			PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
+            	}
+            }
+
+         ]]>
+    </mx:Script>
+	<mx:SWFLoader source="assets/logo.swf" right="10" top="30" height="76"/>
+	
+	
+	
+</mx:Application>

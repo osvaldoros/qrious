@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="470" height="371" 
+	layout="absolute" 
+	showCloseButton="true" 
+	close="closeWindow();"
+ 	creationComplete="centerWindow()" title="Depósito en ventanilla">
+ 	
+	<mx:Script>
+        <![CDATA[
+            import mx.managers.PopUpManager;
+            public function centerWindow():void{
+            	PopUpManager.centerPopUp(this);
+            }
+            
+            public function closeWindow():void{
+            	PopUpManager.removePopUp(this);
+            }
+       ]]>
+       
+	</mx:Script>
+	<mx:ComboBox x="232" y="22" width="224"></mx:ComboBox>
+	<mx:Label x="65" y="24" text="Banco destino a depositar :"/>
+	<mx:Label x="17" y="80" text="Referencia (Clave de Reservación) :"/>
+	<mx:TextInput x="232" y="78" width="160" maxChars="16" text="1234567890123456" textAlign="center"/>
+	<mx:Label x="91" y="52" text="Fecha de Transacción :"/>
+	<mx:DateField x="232" y="50" width="160" showToday="true"/>
+	<mx:Label x="121" y="136" text="Tipo de Cambio :"/>
+	<mx:TextInput x="232" y="134" width="112" text="$13.30" textAlign="right"/>
+	<mx:Label x="115" y="108" text="Total en dolares  :"/>
+	<mx:TextInput x="232" y="106" width="112" text="$1,250.00" textAlign="right"/>
+	<mx:Label x="64" y="164" text="Total en pesos a depositar :"/>
+	<mx:Label x="185" y="192" text="Nota :"/>
+	<mx:TextInput x="232" y="162" width="112" text="$125,000.00" textAlign="right"/>
+	<mx:Button x="367" y="307" label="Aceptar" width="89"/>
+	<mx:Button x="270" y="307" label="Cancelar" width="89" click="closeWindow();"/>
+	<mx:TextArea x="232" y="192" width="224" height="96"/>
+	
+</mx:TitleWindow>	
+
