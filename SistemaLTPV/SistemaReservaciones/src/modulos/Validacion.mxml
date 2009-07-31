@@ -11,10 +11,12 @@
         	import mx.collections.ArrayCollection;
             import mx.managers.PopUpManager;
             
+             [Bindable]
             private var _tipoCliente:ArrayCollection = new ArrayCollection([{tip_id:0,tipo:"Seleccionar"},
             																{tip_id:1,tipo:"Propietario"},
             																{tip_id:2,tipo:"No Propietario"}
-            ])
+            ]);
+            [Bindable]
             private var _datosPrueba:ArrayCollection = new ArrayCollection([{item1:"",item2:"",item3:""}])
             
             public function centerWindow():void{

@@ -11,6 +11,7 @@
             import mx.managers.PopUpManager;
             import mx.collections.ArrayCollection;
             
+            [Bindable]
             private var _tipoCliente:ArrayCollection = new ArrayCollection([{tipo_id:0,tipo:"Seleccionar"},
             																{tipo_id:1,tipo:"Propietario"},
             																{tipo_id:2,tipo:"No Propietario"}

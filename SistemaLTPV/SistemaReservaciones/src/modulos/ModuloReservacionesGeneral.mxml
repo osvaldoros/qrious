@@ -62,6 +62,7 @@
         	import mx.collections.ArrayCollection;
             import mx.managers.PopUpManager;
             
+            [Bindable]
             private var _horas:ArrayCollection = new ArrayCollection([	{horas_id:0,name:"0:00 hrs."},
             															{horas_id:1,name:"1:00 hrs."},
             															{horas_id:2,name:"2:00 hrs."},
@@ -87,7 +88,7 @@
             															{horas_id:22,name:"22:00 hrs."},
             															{horas_id:23,name:"23:00 hrs."},
             															{horas_id:24,name:"24:00 hrs."}
-            															])
+            															]);
             
             
             
