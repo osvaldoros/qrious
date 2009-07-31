@@ -90,8 +90,6 @@
             															{horas_id:24,name:"24:00 hrs."}
             															]);
             
-            
-            
             public function centerWindow():void{
             	PopUpManager.centerPopUp(this);
             }
