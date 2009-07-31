@@ -10,6 +10,7 @@
 </compiler>
 <applications>
 <application path="LaTranquilaLTPV.mxml"/>
+<application path="prb.mxml"/>
 </applications>
 <modules/>
 <buildCSSFiles/>

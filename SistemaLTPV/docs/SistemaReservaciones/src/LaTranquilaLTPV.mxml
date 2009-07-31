@@ -14,6 +14,8 @@
     	        <menuitem label="Validación" data="3"/>
     	        <menuitem label="Alta Clientes No Propietarios" data="4"/>
     	        <menuitem label="Menu Principal" data="5"/>
+    	        <menuitem label="Reservaciones General" data="6"/>
+    	        <menuitem label="Modulo Reservaciones General" data="7"/>
     	    </menuitem>
     	   
     	   	<menuitem label="Ayuda">
@@ -40,7 +42,9 @@
            																{_id:2,name:"Datos Generales",mdl:DatosGenerales},
            																{_id:3,name:"Validación",mdl:Validacion},
            																{_id:4,name:"Alta Clientes No Propietarios",mdl:AltaClientesNoPropietarios},
-           																{_id:5,name:"Menu Principal",mdl:MainMenu}	
+           																{_id:5,name:"Menu Principal",mdl:MainMenu},
+           																{_id:6,name:"Reservaciones General",mdl:ReservacionesGeneral},
+           																{_id:7,name:"Modulo Reservaciones General",mdl:ModuloReservacionesGeneral}	
            	])
             
             public function menuHandler(event:MenuEvent):void
