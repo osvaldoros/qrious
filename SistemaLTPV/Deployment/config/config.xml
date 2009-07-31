@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LaTranquilaLTPV>
+
+	<webApplication gateway="http://www.osvaldo.info/publicis/WebOrb/weborb.php" >
+		<services> 
+                <service name="Person">
+                    <method name="getPersons"/>
+                </service>
+        </services>
+   	</webApplication>    
+	
+</LaTranquilaLTPV>
