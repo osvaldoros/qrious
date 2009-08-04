@@ -101,8 +101,6 @@ function GetSwfVer(){
 				if (versionRevision.indexOf("d") > 0) {
 					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
 				}
-			} else if (versionRevision[0] == "b") {
-				versionRevision = versionRevision.substring(1);
 			}
 			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
 		}
@@ -115,7 +113,7 @@ function GetSwfVer(){
 	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
 	else if ( isIE && isWin && !isOpera ) {
 		flashVer = ControlVersion();
-	}
+	}	
 	return flashVer;
 }
 
