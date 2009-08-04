@@ -66,7 +66,8 @@
             public function menuHandler(event:MenuEvent):void
             {	
             	if(event.item.@data !=0){
-        			PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
+        			var pop = PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
+        			//pop.webApplication = _webApl
             	}
             }
             
