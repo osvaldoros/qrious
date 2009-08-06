@@ -37,10 +37,10 @@
 	
 	<mx:Script>
         <![CDATA[
-        	import mx.com.latranquila.AMF.RemoteObject;
+        	import mx.com.latranquila.web.WebApplication;
+        	import mx.rpc.remoting.RemoteObject;
         	import mx.com.latranquila.config.ConfigLoader;
         	import mx.com.latranquila.config.ConfigEvent;
-        	import mx.com.latranquila.AMF.WebApplication;
         	import mx.events.MenuEvent;
         	import mx.collections.ArrayCollection;
         	import modulos.*;
