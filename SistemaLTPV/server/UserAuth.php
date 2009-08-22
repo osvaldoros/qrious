@@ -45,6 +45,7 @@ class UserAuth{
 		
 		$userStruct["user"] = $userInfo;
 		
+		$_SESSION["user"] = $userInfo;
 		$_SESSION["isVXAuthenticated"] = true;
 		
 		$this->ds->disconnect();
@@ -56,18 +57,37 @@ class UserAuth{
 	
 	public function silentLogout($parameters){
 		$_SESSION["isVXAuthenticated"] = false;
+		$_SESSION["user"] = "";
 		return "OK";
 	}
 	
 	public function logout($parameters){
 		$_SESSION["isVXAuthenticated"] = false;
+		$_SESSION["user"] = "";
 		return "OK";
 	}
 	
 	public function checkCredentials($parameters){
+		// If there is no authentication throw exception
 		if(!$_SESSION["isVXAuthenticated"]){
-			$this->logger->trace("UserAuth > Access denied, please login");	
-			throw new Exception("Access denied, please login");
+			$this->logger->trace("UserAuth > Unauthenticated, Access denied, please login");	
+			throw new Exception("Unauthenticated Access, denied, please login");
+		}else{
+			// If there is authentication but the role is not sufficient, throw exception
+			if($parameters["roles"]){
+				
+				$roleArray = explode($parameters["roles"]);
+				$roleMatched = false;
+				foreach ($roleArray as $value){
+					if($_SESSION["user"]["role"] == $value) $roleMatched = true;
+				}
+				if(!$roleMatched){
+					$this->logger->trace("UserAuth >Insufficient Role, Access denied");	
+					throw new Exception("Insufficient Role, Access denied");
+					
+				}
+				
+			}
 		}
 	}
 	
