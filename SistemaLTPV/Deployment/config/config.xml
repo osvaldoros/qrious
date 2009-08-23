@@ -3,9 +3,11 @@
 
 	<webApplication gateway="http://www.osvaldo.info/publicis/WebOrb/weborb.php" >
 		<services> 
-                <service name="Person">
-                    <method name="getPersons"/>
-                </service>
+			<service name='userAuth' source='UserAuth'>
+				<method name='login' returnType='struct'/>
+				<method name='logout' returnType='string'/>
+				<method name='silentLogout' returnType='string'/>
+			</service>
         </services>
    	</webApplication>    
 	
