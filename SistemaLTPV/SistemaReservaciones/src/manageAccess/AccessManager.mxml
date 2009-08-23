@@ -6,7 +6,7 @@
 	xmlns:manageAccess="manageAccess.*"
 	>
 	
-	<manageAccess:LoginModule id="_loginModule" filters="{[new GlowFilter(0x666666)]}" horizontalCenter="0" verticalCenter="0" webApplication="{_webApplication}" configXML="{_configXML}" loginComplete="{handleLoginResult(event)}"/>
+	<manageAccess:LoginModule id="_loginModule" horizontalCenter="0" verticalCenter="0" webApplication="{_webApplication}" configXML="{_configXML}" loginComplete="{handleLoginResult(event)}"/>
 	
 	<mx:Metadata>
 		[Event(name="loginComplete", type="manageAccess.LoginEvent")]
@@ -51,13 +51,7 @@
 			}			
 			
 			public function enterState():void{
-				// trace( this + " enterState() Initial State: " + currentState);
-				//_queryString = new QueryString();
-				var module:XMLList = _configXML.modules.module.(@default == '1');
-				var entryState:String = module.@name;
-				
 				_loginModule.enterState();
-				//dispatchEvent(new LoginCompleteEvent(entryState, null));
 			}
 			
 			
@@ -66,7 +60,7 @@
 			}
 			
 			private function handleLoginResult(loginResult:LoginEvent):void{
-				dispatchEvent(new LoginEvent(loginResult.state, loginResult.stateParams));
+				dispatchEvent(new LoginEvent(LoginEvent.LOGIN_COMPLETE, loginResult.state, loginResult.stateParams));
 			}
 
 		]]>

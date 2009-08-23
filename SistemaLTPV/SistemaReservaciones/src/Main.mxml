@@ -16,14 +16,14 @@
 				<startUp:StartUpManager id="startUpManager" complete="startUpComplete(event)" failure="startUpFailure(event)" />
 			</mx:AddChild>
 		</mx:State>
-		<mx:State name="manageAccess">
+		<mx:State name="manageAccess" enterState="{accessManager.enterState()}"  exitState="{accessManager.exitState()}">
 			<mx:AddChild>
 				<manageAccess:AccessManager id="accessManager" webApplication="{_webApplication}" loginComplete="loginComplete(event)" loginFailure="loginFailure(event)" />
 			</mx:AddChild>
 		</mx:State>
-		<mx:State name="work">
+		<mx:State name="work" enterState="{enterWork(event);workManager.enterState()}" exitState="{exitWork(event);workManager.exitState()}">
 			<mx:AddChild>
-				<work:WorkManager id="workManager" configXML="{_configXML}" webApplication="{_webApplication}" />
+				<work:WorkManager id="workManager"  />
 			</mx:AddChild>
 		</mx:State>
 		
@@ -31,6 +31,9 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import manageAccess.LogoutEvent;
+			import mx.events.FlexEvent;
+			import mx.events.StateChangeEvent;
 			import manageAccess.LoginEvent;
 			import mx.com.latranquila.web.WebApplication;
 			import mx.controls.Alert;
@@ -48,6 +51,7 @@
 			protected function startUpComplete(event:StartUpEvent):void{
 				_configXML = event.configXML;
 				_webApplication = new WebApplication(_configXML.webApplication);
+				_webApplication.addEventListener(LogoutEvent.LOGOUT_COMPLETE, logoutComplete);
 				currentState = "manageAccess";
 			}
 			
@@ -56,10 +60,25 @@
 			}
 			
 			protected function loginComplete(event:LoginEvent):void{
-				currentState = "work";
+				
+				currentState = event.state;
 			}
 			
+			protected function logoutComplete(event:LogoutEvent):void{
+				currentState = "manageAccess";
+			}
+			
+			
 			protected function loginFailure(event:LoginEvent):void{
+				
+			}
+			
+			protected function enterWork(event:FlexEvent):void{
+				workManager.webApplication = _webApplication;
+				workManager.configXML = _configXML;
+			}
+			
+			protected function exitWork(event:FlexEvent):void{
 				
 			}
 			

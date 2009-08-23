@@ -4,6 +4,9 @@ package mx.com.latranquila.web {
 	import flash.events.EventDispatcher;
 	import flash.system.Capabilities;
 	
+	import manageAccess.LogoutEvent;
+	
+	import mx.com.latranquila.auth.User;
 	import mx.messaging.ChannelSet;
 	import mx.messaging.channels.AMFChannel;
 	import mx.rpc.events.FaultEvent;
@@ -18,6 +21,7 @@ package mx.com.latranquila.web {
 		private var _uploadPort:String;
 		private var _amfChannelSet:ChannelSet;
 		private var _auth:RemoteObject;
+		private var _user:User;
 		private var _ticketProcess:RemoteObject;
 
 		private var _services:Object = {};
@@ -30,7 +34,7 @@ package mx.com.latranquila.web {
 		private var _channelId:String;
 		private var _destination:String;
 
-		
+		[Event(name="logoutComplete", type="manageAccess.LogoutEvent")]
 		public function WebApplication(configXML:XMLList) {
 			super();
 
@@ -64,6 +68,8 @@ package mx.com.latranquila.web {
 			if(_auth){
 				_auth.silentLogout.addEventListener(mx.rpc.events.FaultEvent.FAULT,   handleSilentLogout);
 				_auth.silentLogout.addEventListener(mx.rpc.events.ResultEvent.RESULT, handleSilentLogout);
+				_auth.appLogout.addEventListener(mx.rpc.events.FaultEvent.FAULT,   handleLogout);
+				_auth.appLogout.addEventListener(mx.rpc.events.ResultEvent.RESULT, handleLogout);
 				_auth.login.addEventListener(mx.rpc.events.FaultEvent.FAULT,   loginFault);
 				_auth.login.addEventListener(mx.rpc.events.ResultEvent.RESULT, loginResult);
 			}
@@ -98,8 +104,13 @@ package mx.com.latranquila.web {
 			return service;
 		}	
 		
+		public function get user():User{
+			return _user;
+		}
+		
+		
 		public function logout():void{
-			_auth.logout();
+			_auth.appLogout();
 			
 			//_auth.logout(); // DO NOT CALL logout(). CAUSES BIG PROBLEMS!!!
 		}
@@ -126,10 +137,11 @@ package mx.com.latranquila.web {
 			}	*/			
 			
 			_auth.login({username:_userName, password:_password});
-			
-			
 		}
 		
+		private function handleLogout(e:Object):void{
+			dispatchEvent(new LogoutEvent(LogoutEvent.LOGOUT_COMPLETE));
+		}
 	
 		/**
 		 * Handles 'regular' username/password type logins.
@@ -151,30 +163,9 @@ package mx.com.latranquila.web {
 		}
 		
 		private function loginResult(event:ResultEvent):void{
-			//Alert.show("loginResult> r.result: " + r.result);
-			//?? Should these two things be done here?
-			//user = new User(event.result);
-			//com.octopz.auth.RoleFilter.user = user;
-			//createUserInfo(event.result);
+			_user = new User(event.result.user);
 			dispatchEvent( new Event("loginResult") );
 		}
-	
-		
-	
-		/*public function createUserInfo(userInfo:Object):void {
-			user = new User(userInfo);
-			com.octopz.auth.RoleFilter.user = user;
-			
-			//user selected local time; send his time different to the server
-			if(isNaN(user.timeZone_id)) {
-				
-				var temp:Date = new Date() 
-				var timeDiff:Number = temp.getTimezoneOffset() / -60;		
-						
-				var prefService:RemoteObject = getService("preferences");
-				prefService.setUserTimeDiff(timeDiff);
-			}
-		}*/
 	
 		/**
 		 * Returns upload protocol, ie, http or https. Used to upload files

@@ -61,7 +61,7 @@ class UserAuth{
 		return "OK";
 	}
 	
-	public function logout($parameters){
+	public function appLogout($parameters){
 		$_SESSION["isVXAuthenticated"] = false;
 		$_SESSION["user"] = "";
 		return "OK";
