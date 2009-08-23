@@ -12,9 +12,10 @@ class Reservations{
 		$this->userAuth = new UserAuth();
 	}
 
-    public function getModuleData(){
+    public function getReservations($parameters){
 		// check to see if the user is authenticated, if not it will throw an exception
-		$this->userAuth->checkCredentials();
+		$this->userAuth->checkCredentials("Administrator,System");
+		
         return 7;
     }
 	

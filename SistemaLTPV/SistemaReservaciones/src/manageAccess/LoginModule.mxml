@@ -16,7 +16,7 @@
 	<mx:Button x="240" y="202" label="Sign In" width="82" height="32" fontSize="12" click="{attemptLogin();}"/>
 	
 	
-	<mx:LinkButton x="174" y="175" label="forgot your password?" textAlign="right" color="#A8F45F"/>
+	<mx:LinkButton x="174" y="175" label="forgot your password?" textAlign="right" color="#A8F45F" click="{_reservationsRO.getReservations()}"/>
 	
 	<mx:Metadata>
 		[Event(name="loginComplete", type="manageAccess.LoginEvent")]
@@ -25,6 +25,8 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.remoting.RemoteObject;
 			import mx.com.latranquila.web.WebApplication;
 			import mx.events.ValidationResultEvent;
 			import mx.controls.Alert;
@@ -34,10 +36,19 @@
 			private var _webApplication:WebApplication; // Set by parent
 			private var _configXML:XMLList; // Set by parent
 			
+			// for testing
+			private var _reservationsRO:RemoteObject;
+			
 			public function set webApplication(webApplication:WebApplication):void{
 				_webApplication = webApplication;
 				_webApplication.addEventListener("loginResult", loginResultHandler);
 				_webApplication.addEventListener(FaultEvent.FAULT, loginFaultHandler);
+				
+				// for testing
+				_reservationsRO = _webApplication.getService("reservations");
+				_reservationsRO.getReservations.addEventListener(ResultEvent.RESULT, getReservationsResult);
+				_reservationsRO.getReservations.addEventListener(FaultEvent.FAULT, getReservationsFault);
+				
 			}
 			
 			public function set configXML(configXML:XMLList):void{
@@ -66,6 +77,13 @@
 				Alert.show(event.fault.faultString,"Unable to login");
 				enabled = true;
 			}
+			
+            protected function getReservationsResult(event:ResultEvent):void{
+            	
+            }
+            protected function getReservationsFault(event:FaultEvent):void{
+            	
+            }			
 			
 		]]>
 	</mx:Script>

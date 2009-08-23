@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LaTranquilaLTPV>
 
-	<webApplication gateway="http://www.osvaldo.info/publicis/WebOrb/weborb.php" channelId="my-amf" destination="GenericDestination" >
+	<webApplication gateway="http://latranquila.randomestudio.com/WebOrb/weborb.php" channelId="my-amf" destination="GenericDestination" >
 		<services> 
 			<service name='userAuth' source='UserAuth'>
-				<method name='login' returnType='struct'/>
-				<method name='logout' returnType='string'/>
-				<method name='silentLogout' returnType='string'/>
+				<method name='login'/>
+				<method name='logout'/>
+				<method name='silentLogout'/>
+			</service>
+			<service name='reservations' source='Reservations'>
+				<method name='getReservations'/>
 			</service>
         </services>
    	</webApplication>    

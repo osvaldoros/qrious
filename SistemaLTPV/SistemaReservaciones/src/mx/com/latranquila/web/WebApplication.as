@@ -120,12 +120,12 @@ package mx.com.latranquila.web {
 			
 			// Set the new Remote Credentials on all the services before logging in.
 			
-			for (p in _services) {
+			/*for (p in _services) {
 				service = _services[p] as RemoteObject;
 				service.setRemoteCredentials(_userName, _password);
-			}				
+			}	*/			
 			
-			_auth.login();
+			_auth.login({username:_userName, password:_password});
 			
 			
 		}

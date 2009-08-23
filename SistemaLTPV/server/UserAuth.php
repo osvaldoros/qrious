@@ -67,19 +67,25 @@ class UserAuth{
 		return "OK";
 	}
 	
-	public function checkCredentials($parameters){
+	public function checkCredentials($roles){
+		
+		$this->logger->trace("UserAuth > checkCredentials user = ".var_dump($_SESSION["user"]));
+		$this->logger->trace("UserAuth > checkCredentials roles = ".$roles);
 		// If there is no authentication throw exception
 		if(!$_SESSION["isVXAuthenticated"]){
 			$this->logger->trace("UserAuth > Unauthenticated, Access denied, please login");	
 			throw new Exception("Unauthenticated Access, denied, please login");
 		}else{
 			// If there is authentication but the role is not sufficient, throw exception
-			if($parameters["roles"]){
+			if($roles){
 				
-				$roleArray = explode($parameters["roles"]);
+				$roleArray = explode(",", $roles);
+				$this->logger->trace("UserAuth > checkCredentials roles exploded");
+				reset($roleArray);
 				$roleMatched = false;
 				foreach ($roleArray as $value){
-					if($_SESSION["user"]["role"] == $value) $roleMatched = true;
+					$this->logger->trace("UserAuth > checkCredentials ".$_SESSION["user"]->role." vs ".$value);
+					if($_SESSION["user"]->role == $value) $roleMatched = true;
 				}
 				if(!$roleMatched){
 					$this->logger->trace("UserAuth >Insufficient Role, Access denied");	
