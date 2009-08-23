@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LaTranquilaLTPV>
 
-	<webApplication gateway="http://www.osvaldo.info/publicis/WebOrb/weborb.php" >
+	<webApplication gateway="http://www.osvaldo.info/publicis/WebOrb/weborb.php" channelId="my-amf" destination="GenericDestination" >
 		<services> 
 			<service name='userAuth' source='UserAuth'>
 				<method name='login' returnType='struct'/>

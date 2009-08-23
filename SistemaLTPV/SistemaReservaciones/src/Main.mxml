@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:startUp="startUp.*" 
+	xmlns:manageAccess="manageAccess.*" 
+	xmlns:work="work.*" 
+	currentState="startUp"
+	layout="absolute"
+	applicationComplete="init()"
+	>
+
+
+	<mx:states>
+		<mx:State name="startUp">
+			<mx:AddChild>
+				<startUp:StartUpManager id="startUpManager" complete="startUpComplete(event)" failure="startUpFailure(event)" />
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="manageAccess">
+			<mx:AddChild>
+				<manageAccess:AccessManager id="accessManager" webApplication="{_webApplication}" loginComplete="loginComplete(event)" loginFailure="loginFailure(event)" />
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="work">
+			<mx:AddChild>
+				<work:WorkManager id="workManager" configXML="{_configXML}" webApplication="{_webApplication}" />
+			</mx:AddChild>
+		</mx:State>
+		
+	</mx:states>
+	
+	<mx:Script>
+		<![CDATA[
+			import manageAccess.LoginEvent;
+			import mx.com.latranquila.web.WebApplication;
+			import mx.controls.Alert;
+			import startUp.StartUpEvent;
+			
+			[Bindable]
+			protected var _configXML:XML;
+			[Bindable]
+			protected var _webApplication:WebApplication
+			
+			protected function init():void{
+				startUpManager.homePath = "";
+			}
+			
+			protected function startUpComplete(event:StartUpEvent):void{
+				_configXML = event.configXML;
+				_webApplication = new WebApplication(_configXML.webApplication);
+				currentState = "manageAccess";
+			}
+			
+			protected function startUpFailure(event:StartUpEvent):void{
+				Alert.show(event.info, "Error");
+			}
+			
+			protected function loginComplete(event:LoginEvent):void{
+				currentState = "work";
+			}
+			
+			protected function loginFailure(event:LoginEvent):void{
+				
+			}
+			
+		]]>
+	</mx:Script>
+	
+</mx:Application>

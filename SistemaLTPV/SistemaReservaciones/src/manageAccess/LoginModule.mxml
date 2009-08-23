@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="400" height="300" 
+	borderStyle="solid" 
+	cornerRadius="15" 
+	backgroundColor="#000000"
+	>
+	
+	<mx:Label x="43" y="114" text="Username" fontSize="12" fontWeight="bold"/>
+	<mx:Label x="46" y="86" text="Please sign in to continue" fontSize="12" fontWeight="normal"/>
+	<mx:Label x="46" y="151" text="Password" fontWeight="bold" fontSize="12"/>
+	
+	<mx:TextInput id="userNameFld" x="124" y="114" fontSize="12" width="198" enter="{passwordFld.setFocus();}"/>
+	<mx:TextInput id="passwordFld" x="124" y="149" fontSize="12" width="198" displayAsPassword="true" enter="{attemptLogin();}"/>
+	<mx:Button x="240" y="202" label="Sign In" width="82" height="32" fontSize="12" click="{attemptLogin();}"/>
+	
+	
+	<mx:LinkButton x="174" y="175" label="forgot your password?" textAlign="right" color="#A8F45F"/>
+	
+	<mx:Metadata>
+		[Event(name="loginComplete", type="manageAccess.LoginEvent")]
+		[Event(name="loginFailure",  type="manageAccess.LoginEvent")]
+	</mx:Metadata>	
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.com.latranquila.web.WebApplication;
+			import mx.events.ValidationResultEvent;
+			import mx.controls.Alert;
+			import mx.rpc.events.FaultEvent;
+		
+			[Bindable]
+			private var _webApplication:WebApplication; // Set by parent
+			private var _configXML:XMLList; // Set by parent
+			
+			public function set webApplication(webApplication:WebApplication):void{
+				_webApplication = webApplication;
+				_webApplication.addEventListener("loginResult", loginResultHandler);
+				_webApplication.addEventListener(FaultEvent.FAULT, loginFaultHandler);
+			}
+			
+			public function set configXML(configXML:XMLList):void{
+				_configXML = configXML;;
+			}	
+			
+			
+			public function enterState():void{
+				userNameFld.setFocus();
+			}
+			
+			public function exitState():void{
+			}
+			
+			private function attemptLogin():void{
+				_webApplication.login(userNameFld.text, passwordFld.text);
+				enabled = false;
+			}
+			
+			private function loginResultHandler(event:Event):void{
+				dispatchEvent(new LoginEvent("manageAccount"));
+				enabled = true;
+			}
+			
+			private function loginFaultHandler(event:FaultEvent):void{
+				Alert.show(event.fault.faultString,"Unable to login");
+				enabled = true;
+			}
+			
+		]]>
+	</mx:Script>
+	
+</mx:Canvas>

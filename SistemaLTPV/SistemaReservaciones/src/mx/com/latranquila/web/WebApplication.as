@@ -60,7 +60,7 @@ package mx.com.latranquila.web {
 			_amfChannelSet = new ChannelSet();
 			_amfChannelSet.addChannel(amfChannel);
 			
-			_auth = getService("auth");
+			_auth = getService("userAuth");
 			if(_auth){
 				_auth.silentLogout.addEventListener(mx.rpc.events.FaultEvent.FAULT,   handleSilentLogout);
 				_auth.silentLogout.addEventListener(mx.rpc.events.ResultEvent.RESULT, handleSilentLogout);

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application 
-	preinitialize="preInit()"
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	
-	layout="absolute">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 
 
-	<mx:Style source="style/style.css"/>
 	<mx:MenuBar x="0" y="0" width="100%" labelField="@label" itemClick="menuHandler(event);">
 		<mx:XMLList>
     	    <menuitem label="Administración" >
     	        <menuitem label="Administrar Usuarios" data="0"/>
-    	        
     	    </menuitem>
     	    
     	    <menuitem label="Pantallas" >
@@ -34,19 +28,18 @@
     	</mx:XMLList>
 	</mx:MenuBar>
 	
+	<mx:SWFLoader source="assets/logo.swf" right="10" top="30" height="76"/>
 	
 	<mx:Script>
         <![CDATA[
+        	import mx.core.IFlexDisplayObject;
         	import mx.com.latranquila.web.WebApplication;
         	import mx.rpc.remoting.RemoteObject;
-        	import mx.com.latranquila.config.ConfigLoader;
-        	import mx.com.latranquila.config.ConfigEvent;
         	import mx.events.MenuEvent;
         	import mx.collections.ArrayCollection;
         	import modulos.*;
             import mx.managers.PopUpManager;
             
-            protected var _configLoader:ConfigLoader;
             protected var _webApplication:WebApplication;
             protected var _configXML:XML;
             
@@ -66,47 +59,21 @@
             public function menuHandler(event:MenuEvent):void
             {	
             	if(event.item.@data !=0){
-        			var pop = PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
+        			var pop:IFlexDisplayObject = PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
         			//pop.webApplication = _webApl
             	}
             }
             
-            
-            protected function preInit():void{
-				_configLoader = new ConfigLoader();
-				_configLoader.addEventListener(ConfigEvent.CONFIG_COMPLETE, configComplete);
-				_configLoader.loadConfig("config/config.xml");
+            public function set webApplication(value:WebApplication):void{
+            	_webApplication = value;
             }
             
-			/**
-			 * 
-			 * @param event
-			 * 
-			 */
-			protected function configComplete(event:ConfigEvent):void{
-				_configXML = event.configXML;
-				_webApplication = new WebApplication(_configXML.webApplication);
-				
-				
-				// ejemplo
-				
-				/*_remotePerson = _webApplication.getService("Person");
-				
-				_remotePerson.getPersons.addEventListener(ResultEvent.RESULT, getPersonsResult);
-				_remotePerson.getPersons.addEventListener(FaultEvent.FAULT, getPersonsFault);
-				
-				_remotePerson.getPersons();
-				
-				*/
-				
-				
-				
-			}
+            public function set configXML(value:XML):void{
+            	_configXML = value;
+            }
+            
 
          ]]>
     </mx:Script>
-	<mx:SWFLoader source="assets/logo.swf" right="10" top="30" height="76"/>
 	
-	
-	
-</mx:Application>
+</mx:Canvas>
