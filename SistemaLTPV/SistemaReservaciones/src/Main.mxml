@@ -6,7 +6,10 @@
 	xmlns:work="work.*" 
 	currentState="startUp"
 	layout="absolute"
+	backgroundColor="#000000"
 	applicationComplete="init()"
+	backgroundGradientAlphas="[1.0, 1.0]" 
+	backgroundGradientColors="[#000000, #353535]"
 	>
 
 

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 
-
 	<mx:MenuBar id="MainMenu" dataProvider="{_menuCollection}" x="0" y="0" width="100%" labelField="@label" itemClick="menuHandler(event);"/>
-	
 	<mx:SWFLoader source="assets/logo.swf" right="10" top="30" height="76"/>
 	
 	<mx:Script>
