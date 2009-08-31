@@ -1,11 +1,25 @@
 package mx.com.latranquila.modelo{
 	
 	import flash.events.EventDispatcher;
-	import flash.events.IEventDispatcher;
+	
+	import mx.com.latranquila.model.Person;
+	import mx.com.latranquila.model.UnitGroup;
 
-	public class UnitGroup extends EventDispatcher	{
+	public class Reservation extends EventDispatcher	{
 		
-		public function UnitGroup(){
+		public var person:Person;
+		public var unitGroup:UnitGroup;
+		public var units:Array;
+		public var startDate:Date;
+		public var stopDate:Date;
+		
+		// owner_week or rack
+		public var reservation_type:String;
+		
+		public var subTotal:Number;
+		
+		
+		public function Reservation(){
 			
 		}
 		

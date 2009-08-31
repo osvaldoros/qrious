@@ -2,7 +2,7 @@
 require_once("DataSource.php");
 require_once("UserAuth.php");
 
-class Persons{
+class Units{
 
 	protected $ds;
 	protected $userAuth;
@@ -12,30 +12,36 @@ class Persons{
 		$this->userAuth = new UserAuth();
 	}
 
-    public function getPersons($parameters){
+    public function getUnits($parameters){
 		// check to see if the user is authenticated, if not it will throw an exception
 		$this->userAuth->checkCredentials();
 		
         return 7;
     }
     
-    public function getPerson($parameters){
-    	
-    }
-    
-    public function newPerson($parameters){
-    	
-    }
-    
-    public function updatePerson($parameters){
-    	
-    }
-    
-    public function deletePerson($parameters){
+    /**
+     * 
+     * Gets all the dates available for a specific unit
+     * 
+     */
+    public function getAvailability($parameters){
     	
     }
     
     
+    public function getUnit($parameters){
+    	
+    }
+    
+    public function newUnit($parameters){
+    	
+    }
+    
+    public function updateUnit($parameters){
+    }
+    
+    public function deleteUnit($parameters){
+    }
 	
 }
 

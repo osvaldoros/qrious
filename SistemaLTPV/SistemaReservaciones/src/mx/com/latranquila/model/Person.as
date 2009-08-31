@@ -3,7 +3,7 @@ package mx.com.latranquila.model{
 	import flash.events.EventDispatcher;
 	
 	[Bindable]
-	public class Reservation extends EventDispatcher	{
+	public class Person extends EventDispatcher	{
 		
 		
 		public var person_id:Number;
@@ -20,7 +20,7 @@ package mx.com.latranquila.model{
 		public var postalCode:String;
 		public var version:Number;
 				
-		public function Reservation(personRecord:Object=null){
+		public function Person(personRecord:Object=null){
 			update(personRecord);
 		}
 		

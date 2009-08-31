@@ -18,6 +18,34 @@ class Reservations{
 		
         return 7;
     }
+    
+    /**
+     * 
+     * Gets all the units available for a specific date range
+     * 
+     */
+    public function getAvailability($parameters){
+    	
+    }
+    
+    
+    public function getReservation($parameters){
+    	
+    }
+    
+    public function newReservation($parameters){
+    	
+    }
+    
+    public function updateReservation($parameters){
+    }
+    
+    public function cancelReservation($parameters){
+    	
+    }
+    
+    public function deleteReservation($parameters){
+    }
 	
 }
 
