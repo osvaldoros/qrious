@@ -50,9 +50,6 @@ package mx.com.latranquila.model{
 			}
 		}
 
-		/*
-		 *
-		 */
 		public static var validPersonPropertyNames:Object = {
 			phone: "phone",
 			telephone: "phone",
