@@ -25,7 +25,7 @@ package mx.com.latranquila.controller{
 		
 		public function set webApplication(value:WebApplication):void{
 			_webApplication = value;
-			_unitsRO = _webApplication.getService("Units");
+			_unitsRO = _webApplication.getService("units");
 			
 			_unitsRO.getUnits.addEventListener(ResultEvent.RESULT, getUnitsResult);
 			

@@ -25,7 +25,7 @@ package mx.com.latranquila.controller{
 
 		public function set webApplication(value:WebApplication):void{
 			_webApplication = value;
-			_reservationsRO = _webApplication.getService("Reservations");
+			_reservationsRO = _webApplication.getService("reservations");
 			
 			_reservationsRO.getReservations.addEventListener(ResultEvent.RESULT, getReservationsResult);
 			 

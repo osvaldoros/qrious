@@ -61,6 +61,7 @@
 			}
 			public function set reservations(value:Reservations):void{
 				_reservations = value;
+				_reservations.getReservations();
 			}            
             
             public function set webApplication(value:WebApplication):void{

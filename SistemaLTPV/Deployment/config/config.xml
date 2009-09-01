@@ -11,6 +11,12 @@
 			<service name='reservations' source='Reservations'>
 				<method name='getReservations'/>
 			</service>
+			<service name='persons' source='Persons'>
+				<method name='getPersons'/>
+			</service>
+			<service name='units' source='Units'>
+				<method name='getUnits'/>
+			</service>
         </services>
    	</webApplication>  
    	
