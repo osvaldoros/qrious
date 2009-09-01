@@ -80,7 +80,7 @@ package mx.com.latranquila.model{
 		public function update(personRecord:Object=null):void {
 			if(!personRecord) return;
 			// Fill the person object's properties from whatever is in the personRecord
-			for (var p:String in userRecord){ 
+			for (var p:String in personRecord){ 
 				var propertyName:String = validPersonPropertyNames[p.toLowerCase()];
 				if (propertyName) this[propertyName] = personRecord[p];
 			}

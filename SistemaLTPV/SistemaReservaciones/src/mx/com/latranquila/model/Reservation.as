@@ -1,4 +1,4 @@
-package mx.com.latranquila.modelo{
+package mx.com.latranquila.model{
 	
 	import flash.events.EventDispatcher;
 	

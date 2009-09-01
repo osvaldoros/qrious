@@ -34,6 +34,9 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.com.latranquila.controller.Units;
+			import mx.com.latranquila.controller.Reservations;
+			import mx.com.latranquila.controller.Persons;
 			import manageAccess.LogoutEvent;
 			import mx.events.FlexEvent;
 			import mx.events.StateChangeEvent;
@@ -45,7 +48,11 @@
 			[Bindable]
 			protected var _configXML:XML;
 			[Bindable]
-			protected var _webApplication:WebApplication
+			protected var _webApplication:WebApplication;
+			
+			protected var _persons:Persons;
+			protected var _reservations:Reservations;
+			protected var _units:Units;
 			
 			protected function init():void{
 				startUpManager.homePath = "";
@@ -55,6 +62,16 @@
 				_configXML = event.configXML;
 				_webApplication = new WebApplication(_configXML.webApplication);
 				_webApplication.addEventListener(LogoutEvent.LOGOUT_COMPLETE, logoutComplete);
+				
+				_persons = new Persons();
+				_units = new Units();
+				_reservations = new Reservations();
+				
+				_persons.webApplication = _webApplication;
+				_units.webApplication = _webApplication;
+				_reservations.webApplication = _webApplication;
+				
+				
 				currentState = "manageAccess";
 			}
 			
@@ -77,8 +94,16 @@
 			}
 			
 			protected function enterWork(event:FlexEvent):void{
-				workManager.webApplication = _webApplication;
-				workManager.configXML = _configXML;
+				
+				var workManagerContext:Object = {
+					webApplication: _webApplication,
+					configXML: _configXML,
+					persons: _persons,
+					reservations: _reservations,
+					units: _units
+				}
+				
+				workManager.context = workManagerContext;
 			}
 			
 			protected function exitWork(event:FlexEvent):void{

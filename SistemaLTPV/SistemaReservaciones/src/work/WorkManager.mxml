@@ -6,6 +6,9 @@
 	
 	<mx:Script>
         <![CDATA[
+        	import mx.com.latranquila.controller.Reservations;
+        	import mx.com.latranquila.controller.Units;
+        	import mx.com.latranquila.controller.Persons;
         	import mx.com.latranquila.auth.MenuRoleFilter;
         	import mx.controls.Menu;
         	import mx.collections.XMLListCollection;
@@ -22,6 +25,11 @@
             protected var _webApplication:WebApplication;
             protected var _configXML:XML;
             
+			protected var _persons:Persons;
+			protected var _reservations:Reservations;
+			protected var _units:Units;
+			
+            
             [Bindable]
             protected var _menuCollection:XMLListCollection;
             // for testing
@@ -37,9 +45,23 @@
            																{_id:7,name:"Modulo Reservaciones General",mdl:ModuloReservacionesGeneral}	
            	])
             
-            public function logout(event:MenuEvent=null):void{
-            	_webApplication.logout();
-            }
+			public function set context(contextObj:Object):void{
+				for( var p:String in contextObj){
+					if(this.hasOwnProperty(p)){
+						this[p] = contextObj[p];
+					}
+				}
+			}
+            
+			public function set persons(value:Persons):void{
+				_persons = value;
+			}
+			public function set units(value:Units):void{
+				_units = value;
+			}
+			public function set reservations(value:Reservations):void{
+				_reservations = value;
+			}            
             
             public function set webApplication(value:WebApplication):void{
             	_webApplication = value;
@@ -55,6 +77,10 @@
             public function set configXML(value:XML):void{
             	_configXML = value;
             }
+            
+            public function logout(event:MenuEvent=null):void{
+            	_webApplication.logout();
+            }            
             
             public function enterState():void{
             	var filteredList:XMLList = MenuRoleFilter.filterMenuItemXMLList(_configXML.navMenu.menuitem, _webApplication.user);
