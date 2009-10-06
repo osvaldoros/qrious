@@ -6,6 +6,10 @@
 	
 	<mx:Script>
         <![CDATA[
+        	import mx.containers.TitleWindow;
+        	import views.TarjetaCredito;
+        	import mx.events.CloseEvent;
+        	import flash.utils.getDefinitionByName;
         	import mx.com.latranquila.controller.Reservations;
         	import mx.com.latranquila.controller.Units;
         	import mx.com.latranquila.controller.Persons;
@@ -29,22 +33,13 @@
 			protected var _reservations:Reservations;
 			protected var _units:Units;
 			
+			protected var _openWindows:Object = new Object();
             
             [Bindable]
             protected var _menuCollection:XMLListCollection;
             // for testing
 			private var _reservationsRO:RemoteObject;
            	
-           	[Bindable]
-           	private var _Modulos:ArrayCollection = new ArrayCollection([{_id:0,name:"Seleccionar",mdl:null},
-           																{_id:2,name:"Datos Generales",mdl:DatosGenerales},
-           																{_id:3,name:"Validación",mdl:Validacion},
-           																{_id:4,name:"Alta Clientes No Propietarios",mdl:AltaClientesNoPropietarios},
-           																{_id:5,name:"Menu Principal",mdl:MainMenu},
-           																{_id:6,name:"Reservaciones General",mdl:ReservacionesGeneral},
-           																{_id:7,name:"Modulo Reservaciones General",mdl:ModuloReservacionesGeneral}	
-           	])
-            
 			public function set context(contextObj:Object):void{
 				for( var p:String in contextObj){
 					if(this.hasOwnProperty(p)){
@@ -66,13 +61,6 @@
             
             public function set webApplication(value:WebApplication):void{
             	_webApplication = value;
-            	
-				// for testing
-				_reservationsRO = _webApplication.getService("reservations");            
-				_reservationsRO.getReservations.addEventListener(ResultEvent.RESULT, getReservationsResult);
-				_reservationsRO.getReservations.addEventListener(FaultEvent.FAULT, getReservationsFault);
-				
-				_reservationsRO.getReservations();
             }
             
             public function set configXML(value:XML):void{
@@ -101,18 +89,34 @@
             
             protected function  openPopup(event:MenuEvent):void{
             	if(event.item.@data !=0){
-        			var pop:IFlexDisplayObject = PopUpManager.createPopUp(this,_Modulos[event.item.@data].mdl,false);
-        			//pop.webApplication = _webApl
+            		if(!_openWindows.hasOwnProperty(event.item.@className)){
+        				var pop:TitleWindow = PopUpManager.createPopUp(this, getDefinitionByName("views." + event.item.@className) as Class, false) as TitleWindow;
+        				pop.name = event.item.@className;
+        				PopUpManager.centerPopUp(pop);
+        				pop.addEventListener(CloseEvent.CLOSE, closePopup);
+        				_openWindows[event.item.@className] = pop;
+        				
+        				if(pop.hasOwnProperty("context")){
+        					var popupContext:Object = {
+								persons: _persons,
+								reservations: _reservations,
+								units: _units
+							}
+        					
+        					Object(pop).context = popupContext;
+        				}
+            		}
             	}
             }
             
+            protected function closePopup(event:CloseEvent):void{
+            	var pop:TitleWindow = event.target as TitleWindow;
+            	if(_openWindows.hasOwnProperty(pop.name)){
+	            	PopUpManager.removePopUp(_openWindows[pop.name]);
+	            	delete _openWindows[pop.name]
+            	}
+            }
             
-            protected function getReservationsResult(event:ResultEvent):void{
-            	
-            }
-            protected function getReservationsFault(event:FaultEvent):void{
-            	
-            }
             
 
          ]]>

@@ -4,7 +4,7 @@
 	layout="absolute" 
 	showCloseButton="true" 
 	close="closeWindow();"
- 	creationComplete="centerWindow()" title="Validación" xmlns:modulos="modulos.*">
+ 	creationComplete="centerWindow()" title="Validación" xmlns:views="views.*">
  	
 	<mx:Script>
         <![CDATA[
@@ -53,21 +53,21 @@
 			<mx:DataGridColumn headerText="Sem. Adquiridas" dataField="col1">
 				<mx:itemRenderer>
 					<mx:Component>
-						<modulos:ValidacionItemRender/>
+						<views:ValidacionItemRender/>
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
 			<mx:DataGridColumn headerText="Sem.Usadas" dataField="col2">
 				<mx:itemRenderer>
 					<mx:Component>
-						<modulos:ValidacionItemRender/>
+						<views:ValidacionItemRender/>
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>
 			<mx:DataGridColumn headerText="Sem.Disponibles" dataField="col3">
 				<mx:itemRenderer>
 					<mx:Component>
-						<modulos:ValidacionItemRender/>
+						<views:ValidacionItemRender/>
 					</mx:Component>
 				</mx:itemRenderer>
 			</mx:DataGridColumn>

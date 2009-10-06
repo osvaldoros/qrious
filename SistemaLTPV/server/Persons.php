@@ -2,6 +2,7 @@
 require_once("DataSource.php");
 require_once("UserAuth.php");
 
+
 class Persons{
 
 	protected $ds;
@@ -20,6 +21,7 @@ class Persons{
     }
     
     public function getPerson($parameters){
+    	
     	
     }
     

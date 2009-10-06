@@ -34,6 +34,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import views.*;
 			import mx.com.latranquila.controller.Units;
 			import mx.com.latranquila.controller.Reservations;
 			import mx.com.latranquila.controller.Persons;
@@ -56,6 +57,15 @@
 			
 			protected function init():void{
 				startUpManager.homePath = "";
+				
+				// Force imports
+				DatosGenerales;
+				Validacion;
+				AltaClientesNoPropietarios;
+				MainMenu;
+				ReservacionesGeneral;
+				ModuloReservacionesGeneral
+				Mapa;
 			}
 			
 			protected function startUpComplete(event:StartUpEvent):void{
