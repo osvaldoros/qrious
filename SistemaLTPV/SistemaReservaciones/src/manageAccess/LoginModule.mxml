@@ -7,7 +7,7 @@
 	backgroundColor="#000000"
 	>
 	
-	<mx:Button x="188" y="74" label="Login" width="70" click="{attemptLogin();}"/>
+	<mx:Button x="188" y="74" label="Login" width="70" click="{attemptLogin();}" id="loginBT"/>
 	<mx:Label x="18" y="18" text="Usuario :"/>
 	<mx:TextInput id="userNameFld" x="77" y="16" width="181" enter="{passwordFld.setFocus();}"/>
 	<mx:Label x="9" y="46" text="Password :"/>
@@ -57,17 +57,23 @@
 			
 			private function attemptLogin():void{
 				_webApplication.login(userNameFld.text, passwordFld.text);
-				enabled = false;
+				userNameFld.enabled = false;
+				passwordFld.enabled = false;
+				loginBT.enabled = false;
 			}
 			
 			private function loginResultHandler(event:Event):void{
 				dispatchEvent(new LoginEvent(LoginEvent.LOGIN_COMPLETE, "work"));
-				enabled = true;
+				userNameFld.enabled = true;
+				passwordFld.enabled = true;
+				loginBT.enabled = true;
 			}
 			
 			private function loginFaultHandler(event:FaultEvent):void{
 				Alert.show(event.fault.faultString,"Unable to login");
-				enabled = true;
+				userNameFld.enabled = true;
+				passwordFld.enabled = true;
+				loginBT.enabled = true;
 			}
 			
 		]]>

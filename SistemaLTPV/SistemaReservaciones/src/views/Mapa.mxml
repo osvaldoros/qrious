@@ -13,7 +13,7 @@
 				<mx:SWFLoader x="375" y="10" source="assets/Edificio.swf" id="swfloader1"/>
 			</mx:AddChild>
 			<mx:AddChild position="lastChild">
-				<mx:Button x="824" y="331" label="Regresar"/>
+				<mx:Button x="824" y="331" label="Regresar" click="currentState =&quot;&quot;; "/>
 			</mx:AddChild>
 			<mx:AddChild relativeTo="{swfloader1}" position="before">
 				<mx:Label x="375" y="278" text="Salida:"/>
@@ -68,6 +68,7 @@
 				<mx:Button x="685" y="331" label="Seleccionar Unidad"/>
 			</mx:AddChild>
 			<mx:SetProperty name="title" value="Mapa de Unidades"/>
+			<mx:RemoveChild target="{button1}"/>
 		</mx:State>
 	</mx:states>
  	
@@ -76,7 +77,7 @@
 	<mx:Label x="352" y="44" text="Unidades Disponibles:" id="label6"/>
 	<mx:TextInput x="490" y="68" width="60" id="textinput2"/>
 	<mx:TextInput x="490" y="42" width="60" id="textinput1"/>
-	<mx:Button x="365" y="307" label="Salir" width="189"/>
+	<mx:Button x="365" y="307" label="Detalle" width="189" id="button1" click="currentState = &quot;detalle&quot;;"/>
 	
 	
 	<mx:Script>

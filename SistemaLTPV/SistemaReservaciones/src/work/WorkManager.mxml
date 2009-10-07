@@ -23,7 +23,7 @@
         	import mx.rpc.remoting.RemoteObject;
         	import mx.events.MenuEvent;
         	import mx.collections.ArrayCollection;
-        	import modulos.*;
+        	import views.*;
             import mx.managers.PopUpManager;
             
             protected var _webApplication:WebApplication;
