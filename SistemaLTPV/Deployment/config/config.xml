@@ -27,14 +27,20 @@
 	    </menuitem>
 	    
 	    <menuitem label="Pantallas" roles="Clerk,Manager,Administrator,System" >
-	        <menuitem label="Datos Generales" className="DatosGenerales" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Validación" className="Validacion" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Alta Clientes No Propietarios" className="AltaClientesNoPropietarios" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Menu Principal" className="MainMenu" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Reservaciones General" className="ReservacionesGeneral" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Modulo Reservaciones General" className="ModuloReservacionesGeneral" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	        <menuitem label="Mapa" className="Mapa" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
-	    </menuitem>
+	        <menuitem label="Depositos en Ventanilla"		className="DepositoVentanilla" 					roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Validación" 					className="Validacion" 							roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Alta Clientes No Propietarios" className="AltaClientesNoPropietarios" 			roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Desbloqueo de Inventarios"     className="DesbloqueoInventario" 				roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Reservaciones General" 		className="ReservacionesGeneral" 				roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Deposito Unidades a Renta" 	className="DepositoUnidadesRenta" 				roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Mapa"				 			className="Mapa" 								roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Tarjeta de Credito" 			className="TarjetaCredito" 						roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Dep. Unidades a Renta Prop." 	className="DepositoUnidadesRentaPropietarios" 	roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Modulo Reservaciones General" 	className="ModuloReservacionesGeneral" 			roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Datos Generales" 				className="DatosGenerales" 						roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Transferencia Electronica" 	className="TransferenciaElectronica" 			roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+			<menuitem label="Menu Principal" 				className="MainMenu" 							roles="Clerk,Manager,Administrator,System" method="openPopup"/>
+		</menuitem>
 	   
 	   	<menuitem label="Ayuda" roles="Clerk,Manager,Administrator,System">
 	    	<menuitem label="Ayuda" roles="Clerk,Manager,Administrator,System" method="openPopup"/>
