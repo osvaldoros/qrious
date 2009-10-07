@@ -59,13 +59,20 @@
 				startUpManager.homePath = "";
 				
 				// Force imports
-				DatosGenerales;
-				Validacion;
 				AltaClientesNoPropietarios;
+				DatosGenerales;
+				DepositoUnidadesRenta;
+				DepositoUnidadesRentaPropietarios;
+				DesbloqueoInventario;
 				MainMenu;
-				ReservacionesGeneral;
-				ModuloReservacionesGeneral
 				Mapa;
+				ModuloReservacionesGeneral;
+				ReservacionesGeneral;
+				ReservacionesNoPropietarios;
+				TarjetaCredito;
+				TransferenciaElectronica
+				Validacion;
+				DepositoVentanilla;
 			}
 			
 			protected function startUpComplete(event:StartUpEvent):void{
