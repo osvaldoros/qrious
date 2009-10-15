@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute"
+	applicationComplete="init()"
+	>
+	
+	<mx:Label x="30" y="44" text="Tu Escribes"/>
+	<mx:TextArea id="inputText" x="30" y="70" width="401" height="313" enabled="false"/>
+	
+	<mx:Label x="458" y="44" text="El servidor contesta"/>
+	<mx:Text id="responseText" x="458" y="70" width="401" height="313"/>
+	
+	<mx:Button id="sendButton1" x="30" y="391" label="sayPublic" enabled="false" click="{_demoService.sayPublic(inputText.text)}"/>
+	<mx:Button id="sendButton2" x="152" y="391" label="sayAuthenticated" enabled="false" click="{_demoService.sayAuthenticated(inputText.text)}"/>
+	<mx:Button id="sendButton3" x="305" y="391" label="sayAdministrator" enabled="false" click="{_demoService.sayAdministrator(inputText.text)}"/>
+	
+	<!-- Estos botones son solo para que puedas ver la autentificacion -->
+	<mx:Button id="loginGuest" x="152" y="10" label="Login as Guest" enabled="false" click="{_webApplication.login('guest', 'asdasd')}"/>
+	<mx:Button id="logoutButton" x="30" y="10" label="Logout" enabled="false" click="{_webApplication.logout()}" width="80"/>
+	<mx:Button id="loginAdministrator" x="305" y="10" label="Login as Administrator" enabled="false" click="{_webApplication.login('admin', 'asdasd')}"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.WebOrbDemo.events.LogoutEvent;
+			import mx.rpc.remoting.RemoteObject;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import com.WebOrbDemo.events.ConfigEvent;
+			import com.WebOrbDemo.config.ConfigLoader;
+			import com.WebOrbDemo.web.WebApplication;
+			
+			protected var _webApplication:WebApplication;
+			protected var _demoService:RemoteObject;
+			
+			// Esto no lo necesitas hacer en las vistas de la tranquila, lo hace el main y las vistas ya no lo necesitan
+			protected function init():void{
+				var configLoader:ConfigLoader = new ConfigLoader("config/config.xml");
+				configLoader.addEventListener(ConfigEvent.CONFIG_COMPLETE, configComplete)
+
+			}
+			
+			// Esto tampoco lo necesitas hacer, estoy simulando lo que haria el main al inyectar la referencia a WebApplication
+			protected function configComplete(event:ConfigEvent):void {
+				webApplication = event.webApplication;				
+			}
+				
+			// Todas las vistas deben tener un setter webApplication. El main ( u otro subcomponente que cree la vista le debera inyectar la referencia de webApplication como parte del contexto )
+			// La inyeccion de la referencia ya esta hecho, actualmente el main inyecta webApplication a WorkManager y WorkManager a su vez inyecta la referencia a los popups cuando los abre )
+			// siempre y cuando el popup defina el setter necesario
+			public function set webApplication(value:WebApplication):void{
+
+				_webApplication = value
+				
+				// Estos no los necesitas dentro de las vistas, aqui estan solo por el demo 
+				_webApplication.addEventListener(LogoutEvent.LOGOUT_COMPLETE, webAppLogout);
+				_webApplication.addEventListener("loginResult", webAppLogin);
+				
+				// Una vez que tengas la referencia a webApplication puedes obtener el servicio deseado usando el metodo 'getService' ( el mejor lugar para hacer esto es dentro del setter como en este ejemplo )
+				// el nombre del servicio debe corresponder con el atributo 'name' en el config.xml, el atributo 'source' debe corresponder con el nombre de la clase en PHP			
+				_demoService = _webApplication.getService("WebOrbDemoService");
+				
+				// Puedes obetener todos los servicios que quieras y asignar listeners a cada metodo de cada servicio independientemente
+				
+				// Ya que tienes el servicio puedes agregar listeners a los metodos particulares que vas a llamar, puedes asignar un handler para RESULT y FAULT para c/u
+				// No es indispensable crear los nodos de los metodos dentro del config.xml pero es bueno para saber que metodos puedes llamar sin tener que ir a servidor
+				_demoService.sayPublic.addEventListener(ResultEvent.RESULT, sayPublicResult);
+				_demoService.sayPublic.addEventListener(FaultEvent.FAULT, sayFault);
+				
+				_demoService.sayAuthenticated.addEventListener(ResultEvent.RESULT, sayAuthenticatedResult);
+				_demoService.sayAuthenticated.addEventListener(FaultEvent.FAULT, sayFault);
+				
+				_demoService.sayAdministrator.addEventListener(ResultEvent.RESULT, sayAdministratorResult);
+				_demoService.sayAdministrator.addEventListener(FaultEvent.FAULT, sayFault);
+				// ***** Checa los botones para que veas como invocan los metodos en el servicio ****
+				
+				// Aqui estoy abilitando los controles, para que no puedan dar click antes de que webApplication haya sigo inyectado
+				inputText.enabled = true;
+				sendButton1.enabled = true;
+				sendButton2.enabled = true;
+				sendButton3.enabled = true;
+				
+				loginAdministrator.enabled = true;
+				loginGuest.enabled = true;
+				
+			}
+			
+			// Handlers que son invocados cuando se recibe un RESULT o un FAULT del servidor
+			// Nota como se pueden asignar distintos handlers al metodo especifico que estas llamando
+			protected function sayPublicResult(event:ResultEvent):void{
+				responseText.htmlText = event.result.toString(); 
+			}
+			protected function sayAuthenticatedResult(event:ResultEvent):void{
+				responseText.htmlText = "<b>" + event.result + "</b>"; 
+			}
+			protected function sayAdministratorResult(event:ResultEvent):void{
+				responseText.htmlText = "<u><font size='28'>" + event.result + "</font></u>"; 
+			}
+			
+			// Tambien se puede repetir el mismo handler para varios metodos como este...
+			protected function sayFault(event:FaultEvent):void{
+				responseText.htmlText = event.fault.faultString; 
+			}
+			
+			
+			
+			
+			// Estos metodos tampoco son necesarios en las vistas, el WorkManager escucha estos eventos y cambia el estado correspondiente
+			// Los puse aqui solo para que puedas probar los diferentes niveles de autentificacion
+			protected function webAppLogout(event:LogoutEvent):void{
+				loginAdministrator.enabled = true;
+				loginGuest.enabled = true;
+				logoutButton.enabled = false;
+			}
+			
+			protected function webAppLogin(event:Event):void{
+				loginAdministrator.enabled = false;
+				loginGuest.enabled = false;
+				logoutButton.enabled = true;
+			}
+		
+				
+		]]>
+	</mx:Script>
+	
+</mx:Application>

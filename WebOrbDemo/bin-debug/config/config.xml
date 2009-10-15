@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LaTranquilaLTPV>
+
+	<webApplication gateway="http://latranquila.randomestudio.com/WebOrb/weborb.php" channelId="my-amf" destination="GenericDestination" >
+		<services> 
+			<service name='WebOrbDemoService' source='WebOrbDemoService'>
+				<method name='sayPublic'/>
+				<method name='sayAuthenticated'/>
+				<method name='sayAdministrator'/>
+			</service>
+			<service name='userAuth' source='UserAuth'>
+				<method name='login'/>
+				<method name='appLogout'/>
+				<method name='silentLogout'/>
+			</service>			
+        </services>
+   	</webApplication>  
+   	
+   	
+   
+	
+</LaTranquilaLTPV>
