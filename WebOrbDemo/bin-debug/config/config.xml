@@ -13,10 +13,12 @@
 				<method name='appLogout'/>
 				<method name='silentLogout'/>
 			</service>		
-				<service name='Person' source='Person'>
-				<method name='getPerson'/>
-				<method name='deletePerson'/>
-				<method name='newPerson'/>
+			<service name='SrlServices' source='SrlServices'>
+				<method name='newAdditionalGuests'/>
+				<method name='newCardInformation'/>
+			</service>
+			<service name='SrlReservations' source='SrlReservations'>
+				<method name='newReservation'/>
 			</service>
         </services>
    	</webApplication>  
