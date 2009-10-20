@@ -12,14 +12,32 @@
 				<method name='login'/>
 				<method name='appLogout'/>
 				<method name='silentLogout'/>
-			</service>		
+			</service>	
+				
 			<service name='SrlServices' source='SrlServices'>
 				<method name='newAdditionalGuests'/>
 				<method name='newCardInformation'/>
+				<method name='newPersonalInformation'/>
 			</service>
+			
 			<service name='SrlReservations' source='SrlReservations'>
 				<method name='newReservation'/>
 			</service>
+			
+			<service name='Availability' source='Availability'>
+				<method name='checkAvailability'/>
+			</service>
+			
+			<service name='Users' source='Users'>
+				<method name='newUser'/>
+			</service>
+			
+			<service name='ReservationProcess' source='ReservationProcess'>
+				<method name='getReservationFolio'/>
+				<method name='onLineUnit'/>				
+			</service>
+			
+			
         </services>
    	</webApplication>  
    	
