@@ -1,0 +1,88 @@
+/*
+ * 
+ *  Qrious Theme
+ * 
+ */
+.x-tab img.videos, .x-button img.x-icon-mask.videos {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtQTFRFg5q1epSwdI6sfJWx+vv8xdDcs8HSorTIiJ644eft5uvw8/b4lqvBf5izdZCt1t3mucfV8vT3qbnMyNPetMPT2+Hpi6G6co2r////9TJTTQAAABl0Uk5T////////////////////////////////AAE0CrcAAABeSURBVHja7NM3EoAwDERRYZscTJbuf1I8jDtgtA2dfrOFXisSMDJo8Avys3zpZwh268QAjENap8FQNvcWGvR5Vci/wRGFpMG2dhgUWXaPQZGwnRhMHZW9gsH3LgEGAOkHktqmg0qqAAAAAElFTkSuQmCC');
+}
+.x-tab img.photos, .x-button img.x-icon-mask.photos {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtQTFRFg5q1epSwdI6sfJWx+vv8xdDcs8HSorTIiJ644eft5uvw8/b4lqvBf5izdZCt1t3mucfV8vT3qbnMyNPetMPT2+Hpi6G6co2r////9TJTTQAAABl0Uk5T////////////////////////////////AAE0CrcAAABeSURBVHja7NM3EoAwDERRYZscTJbuf1I8jDtgtA2dfrOFXisSMDJo8Avys3zpZwh268QAjENap8FQNvcWGvR5Vci/wRGFpMG2dhgUWXaPQZGwnRhMHZW9gsH3LgEGAOkHktqmg0qqAAAAAElFTkSuQmCC');
+}
+.x-tab img.quiz, .x-button img.x-icon-mask.quiz {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFvcrY9vf5tMLS7PD0obPHe5Wx2eHpjqS8x9HdhZy20NnjqrvNmKvB4+juco2r////VUEKCgAAABB0Uk5T////////////////////AOAjXRkAAACdSURBVHja7NTdDoMwCAVgsH/WKb7/26rTZm5iD8luNJHrL4TS09JoLHrgUgPJXIkcgI2Uoir08qm2AuPOSapA2kPhc9iJd10u0IH1kKHjFwxo4WVDHsG0wQggqw0VuI2YGMH1cnqG6QmLe+H0uHe/0QijJbj5d9VncMjKhBd7hW04vBcVrtlpIGQttBqMasb+6Wie0X7qO3+kkwADAAbDWp6qU2ttAAAAAElFTkSuQmCC');
+}
+.x-tab img.textual, .x-button img.x-icon-mask.textual {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFi6XMKFmhaoy+SXKv3uXwOWWoWn+2nLLTzdnp7vL4rL/bGEyZvczie5nFBz+S////CmsPJQAAABB0Uk5T////////////////////AOAjXRkAAACySURBVHja7NRLDoQgDADQFuSrQ+9/25GfoiAaw9KuKrxIbYNADwM+OAwa5vohEgR3F1OE8YUImgiLXVx3RUyXHaINlZRFcL+gQqo2yFPJFSSNJZxNgvJ4tI9plRChdDI3gdeQlg0qZzMsP8blRZFhEXMLwqwr6FqwNcJzmwdDGgGx0cdbKHqQV7N+AFkPsjdQXkM4XgoBADX8XVwXNCfoG8PAhw7P1qe4D/L7m42BfwEGAHd0WGoZy8iZAAAAAElFTkSuQmCC');
+}
+
+.thumb{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.img{
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+
+.poi_visited{
+	background-size:contain;
+	/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFvcrY9vf5tMLS7PD0obPHe5Wx2eHpjqS8x9HdhZy20NnjqrvNmKvB4+juco2r////VUEKCgAAABB0Uk5T////////////////////AOAjXRkAAACdSURBVHja7NTdDoMwCAVgsH/WKb7/26rTZm5iD8luNJHrL4TS09JoLHrgUgPJXIkcgI2Uoir08qm2AuPOSapA2kPhc9iJd10u0IH1kKHjFwxo4WVDHsG0wQggqw0VuI2YGMH1cnqG6QmLe+H0uHe/0QijJbj5d9VncMjKhBd7hW04vBcVrtlpIGQttBqMasb+6Wie0X7qO3+kkwADAAbDWp6qU2ttAAAAAElFTkSuQmCC');*/
+	background-image: url('/images/poi_star.png');
+}
+
+.poi_not_visited{
+	background-size:contain;
+	/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFvcrY9vf5tMLS7PD0obPHe5Wx2eHpjqS8x9HdhZy20NnjqrvNmKvB4+juco2r////VUEKCgAAABB0Uk5T////////////////////AOAjXRkAAACdSURBVHja7NTdDoMwCAVgsH/WKb7/26rTZm5iD8luNJHrL4TS09JoLHrgUgPJXIkcgI2Uoir08qm2AuPOSapA2kPhc9iJd10u0IH1kKHjFwxo4WVDHsG0wQggqw0VuI2YGMH1cnqG6QmLe+H0uHe/0QijJbj5d9VncMjKhBd7hW04vBcVrtlpIGQttBqMasb+6Wie0X7qO3+kkwADAAbDWp6qU2ttAAAAAElFTkSuQmCC');*/
+	background-image: url('/images/poi_dot.png');
+}
+
+
+/*
+ * 
+ *  POI assets ( this will most likely be in-line styles along with the data )
+ * 
+ */
+.thumb1{
+	background-image: url('/images/img1_thumb.jpg');
+}
+.thumb2{
+	background-image: url('/images/img2_thumb.jpg');
+}
+.thumb3{
+	background-image: url('/images/img3_thumb.jpg');
+}
+.thumb4{
+	background-image: url('/images/img4_thumb.jpg');
+}
+.thumb5{
+	background-image: url('/images/img5_thumb.jpg');
+}
+.thumb6{
+	background-image: url('/images/img6_thumb.jpg');
+}
+
+
+.img1{
+	background-image: url('/images/img1.jpg');
+}
+.img2{
+	background-image: url('/images/img2.jpg');
+}
+.img3{
+	background-image: url('/images/img3.jpg');
+}
+.img4{
+	background-image: url('/images/img4.jpg');
+}
+.img5{
+	background-image: url('/images/img5.jpg');
+}
+.img6{
+	background-image: url('/images/img6.jpg');
+}
+
+
+
+
