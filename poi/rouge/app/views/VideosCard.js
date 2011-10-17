@@ -16,10 +16,10 @@ app.views.VideosCard = Ext.extend(Ext.Panel, {
 		},
 		{
 	        xtype: 'video',
-	        url: '/videos/rouge_white.m4v',
+	        url: '/poi/rouge/videos/rouge_white.m4v',
 	        width: 300,
 	        height: 150,
-	        posterUrl: '/videos/rouge_white_poster.png'
+	        posterUrl: '/poi/rouge/videos/rouge_white_poster.png'
 		},
 	]
 });

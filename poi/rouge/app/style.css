@@ -29,13 +29,13 @@
 .poi_visited{
 	background-size:contain;
 	/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFvcrY9vf5tMLS7PD0obPHe5Wx2eHpjqS8x9HdhZy20NnjqrvNmKvB4+juco2r////VUEKCgAAABB0Uk5T////////////////////AOAjXRkAAACdSURBVHja7NTdDoMwCAVgsH/WKb7/26rTZm5iD8luNJHrL4TS09JoLHrgUgPJXIkcgI2Uoir08qm2AuPOSapA2kPhc9iJd10u0IH1kKHjFwxo4WVDHsG0wQggqw0VuI2YGMH1cnqG6QmLe+H0uHe/0QijJbj5d9VncMjKhBd7hW04vBcVrtlpIGQttBqMasb+6Wie0X7qO3+kkwADAAbDWp6qU2ttAAAAAElFTkSuQmCC');*/
-	background-image: url('/images/poi_star.png');
+	background-image: url('/poi/rouge/images/poi_star.png');
 }
 
 .poi_not_visited{
 	background-size:contain;
 	/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFvcrY9vf5tMLS7PD0obPHe5Wx2eHpjqS8x9HdhZy20NnjqrvNmKvB4+juco2r////VUEKCgAAABB0Uk5T////////////////////AOAjXRkAAACdSURBVHja7NTdDoMwCAVgsH/WKb7/26rTZm5iD8luNJHrL4TS09JoLHrgUgPJXIkcgI2Uoir08qm2AuPOSapA2kPhc9iJd10u0IH1kKHjFwxo4WVDHsG0wQggqw0VuI2YGMH1cnqG6QmLe+H0uHe/0QijJbj5d9VncMjKhBd7hW04vBcVrtlpIGQttBqMasb+6Wie0X7qO3+kkwADAAbDWp6qU2ttAAAAAElFTkSuQmCC');*/
-	background-image: url('/images/poi_dot.png');
+	background-image: url('/poi/rouge/images/poi_dot.png');
 }
 
 
@@ -45,42 +45,42 @@
  * 
  */
 .thumb1{
-	background-image: url('/images/img1_thumb.jpg');
+	background-image: url('/poi/rouge/images/img1_thumb.jpg');
 }
 .thumb2{
-	background-image: url('/images/img2_thumb.jpg');
+	background-image: url('/poi/rouge/images/img2_thumb.jpg');
 }
 .thumb3{
-	background-image: url('/images/img3_thumb.jpg');
+	background-image: url('/poi/rouge/images/img3_thumb.jpg');
 }
 .thumb4{
-	background-image: url('/images/img4_thumb.jpg');
+	background-image: url('/poi/rouge/images/img4_thumb.jpg');
 }
 .thumb5{
-	background-image: url('/images/img5_thumb.jpg');
+	background-image: url('/poi/rouge/images/img5_thumb.jpg');
 }
 .thumb6{
-	background-image: url('/images/img6_thumb.jpg');
+	background-image: url('/poi/rouge/images/img6_thumb.jpg');
 }
 
 
 .img1{
-	background-image: url('/images/img1.jpg');
+	background-image: url('/poi/rouge/images/img1.jpg');
 }
 .img2{
-	background-image: url('/images/img2.jpg');
+	background-image: url('/poi/rouge/images/img2.jpg');
 }
 .img3{
-	background-image: url('/images/img3.jpg');
+	background-image: url('/poi/rouge/images/img3.jpg');
 }
 .img4{
-	background-image: url('/images/img4.jpg');
+	background-image: url('/poi/rouge/images/img4.jpg');
 }
 .img5{
-	background-image: url('/images/img5.jpg');
+	background-image: url('/poi/rouge/images/img5.jpg');
 }
 .img6{
-	background-image: url('/images/img6.jpg');
+	background-image: url('/poi/rouge/images/img6.jpg');
 }
 
 

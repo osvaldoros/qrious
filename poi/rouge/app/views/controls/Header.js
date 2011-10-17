@@ -24,10 +24,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 				{width:10}
 			]
 		}
-	],
-	initComponent:function(){
-		console.log('initHeader')
-	}
+	]
 });
 
 Ext.reg("Header", app.views.controls.Header);
