@@ -1,37 +1,10 @@
 (function() {
 	
-	var gallery = new Ext.Carousel({
-		fullscreen:true,
-		items:[
-				{cls: 'img img1'},
-				{cls: 'img img2'},
-				{cls: 'img img3'},
-				{cls: 'img img4'},
-				{cls: 'img img5'},
-				{cls: 'img img6'}
-		]
-	});
-	
-	var listeners = {
-		body:
-		{
-			tap:function(){
-				var photos = app.views.viewport.items.map['photosCard'];
-				var toolbar = photos.dockedItems.map['toolbar'];
-				photos.setActiveItem(1);
-				var backButton = new Ext.Button({
-                    ui  : 'back',
-                    text: 'back'
-                });
-				
-				backButton.handler = function(){
-					photos.setActiveItem(0);
-					toolbar.remove(backButton);
-				}
-				toolbar.add(backButton);
-				toolbar.doLayout();
-			}
-		}, scope:this
+	var switchToGallery = function(index){
+		console.log('switchToGallery >' + index);
+		app.views.viewport.setActiveItem(1);
+		var gallery = app.views.viewport.items.map['gallery'];
+		gallery.selectImageByIndex(index);
 	}
 	
 	var thumbnails = {
@@ -51,28 +24,27 @@
 					itemCls:'thumb'
 				},
 				items:[
-					{width:40, height:40, cls: 'thumb1', listeners:listeners},
-					{width:40, height:40, cls: 'thumb2', listeners:listeners},
-					{width:40, height:40, cls: 'thumb3', listeners:listeners},
-					{width:40, height:40, cls: 'thumb4', listeners:listeners},
-					{width:40, height:40, cls: 'thumb5', listeners:listeners},
-					{width:40, height:40, cls: 'thumb6', listeners:listeners}
+					{width:40, height:40, cls: 'thumb1', listeners:{body:{tap:function(event){ switchToGallery(0)	}}}, id:'thumb1'},
+					{width:40, height:40, cls: 'thumb2', listeners:{body:{tap:function(event){ switchToGallery(1)	}}}, id:'thumb2'},
+					{width:40, height:40, cls: 'thumb3', listeners:{body:{tap:function(event){ switchToGallery(2)	}}}, id:'thumb3'},
+					{width:40, height:40, cls: 'thumb4', listeners:{body:{tap:function(event){ switchToGallery(3)	}}}, id:'thumb4'},
+					{width:40, height:40, cls: 'thumb5', listeners:{body:{tap:function(event){ switchToGallery(4)	}}}, id:'thumb5'},
+					{width:40, height:40, cls: 'thumb6', listeners:{body:{tap:function(event){ switchToGallery(5)	}}}, id:'thumb6'}
 				]
 			}
 		]
 	}
 	
-	
 	app.views.PhotosCard = Ext.extend(Ext.Panel, {
+		fullscreen:true,
 		title: "Photos",
 		iconCls: "photos",
 		scroll:'vertical',
 		dockedItems:[
 			{xtype:'Header', title:'Photos'}
 		],
-		layout:'card',
 		items:[
-			thumbnails, gallery
+			thumbnails
 		],
 	});
 	
