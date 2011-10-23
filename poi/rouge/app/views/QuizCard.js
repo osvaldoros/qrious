@@ -8,8 +8,8 @@ var results = [false, false, false, false, false];
 
 
 var resultsTextArea = new Ext.form.TextArea({
-				        html: "",
-				      }),
+				        html: ""
+				      })
 
 // methods
 

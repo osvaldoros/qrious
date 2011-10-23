@@ -1,7 +1,6 @@
 (function() {
 	
 	var switchToGallery = function(index){
-		console.log('switchToGallery >' + index);
 		app.views.viewport.setActiveItem(1);
 		var gallery = app.views.viewport.items.map['gallery'];
 		gallery.selectImageByIndex(index);
