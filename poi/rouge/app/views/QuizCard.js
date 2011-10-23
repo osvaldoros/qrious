@@ -1,50 +1,98 @@
 
 // variables
 
-var answer1 = "";
-var answer2 = "";
-var answer3 = "";
-var answer4 = "";
-var answer5 = "";
+var answers = ["", "", "", "", ""];
+
+var results = [false, false, false, false, false];
 
 
 
-
+var resultsTextArea = new Ext.form.TextArea({
+				        html: "",
+				      }),
 
 // methods
 
+
+function calculateDesiredWidth() {
+    var viewWidth = Ext.Element.getViewportWidth();
+    var viewHeight = Ext.Element.getViewportHeight();
+    var desiredHeight = viewHeight-100;
+	if(desiredHeight > 312) desiredHeight = 312;
+    return desiredHeight;
+};
+
+
+function calculateDesiredPadding() {
+    var viewWidth = Ext.Element.getViewportWidth();
+    var viewHeight = Ext.Element.getViewportHeight();
+    var desiredPadding = 20;
+    if(viewHeight > 600) desiredPadding = 40;
+    return desiredPadding;
+};
+
+
+
 function nextQuestion(e){
 	var slideNum = carousel.getActiveIndex();
-	slideNum++
+	slideNum++;
 	carousel.setActiveItem(slideNum);
 }
 
 
 function submit(e){
-	alert ('Your score is ' + score() + " out of 5.");
+		
+	var slideNum = carousel.getActiveIndex();
+	slideNum++;
+	carousel.setActiveItem(slideNum);
+	
+	resultsString = "Your score is " + score() + " / 5.<br>";
+	
+	var arLen = results.length;
+	for ( var i=0; i<arLen; i++ ){
+		
+		var tempResult;
+		
+		if (results[i]== true){ tempResult = "correct";
+		} else tempResult = "incorrect";
+	
+		var tempString = "Answer " + (i+1) + " is " + tempResult + "<br>";
+		
+		resultsString = resultsString + tempString;
+		
+	}
+	
+	resultsTextArea.update(resultsString);
+			
 }
 
 
 function radioChecked(e){
-	
-	if(e.name=="radiogroup1") answer1 = e.label;
-	if(e.name=="radiogroup2") answer2 = e.label;
-	if(e.name=="radiogroup3") answer3 = e.label;
-	if(e.name=="radiogroup4") answer4 = e.label;
-	if(e.name=="radiogroup5") answer5 = e.label;
+		
+	if(e.name=="radiogroup1") answers[0] = e.label;
+	if(e.name=="radiogroup2") answers[1] = e.label;
+	if(e.name=="radiogroup3") answers[2] = e.label;
+	if(e.name=="radiogroup4") answers[3] = e.label;
+	if(e.name=="radiogroup5") answers[4] = e.label;
 	
 }
+
 
 function score(){
 
 	var score = 0;
 	
-	if(answer1=="no") score++;
-	if(answer2=="late summer/fall") score++;
-	if(answer3=="nectar") score++;
-	if(answer4=="goldenrod") score++;
-	if(answer5=="aster") score++;
-	
+	if(answers[0]=="no"){ score++; results[0]=true; }
+	else {results[0]=false}
+	if(answers[1]=="late summer/fall"){ score++; results[1]=true; }
+	else {results[1]=false}
+	if(answers[2]=="nectar"){ score++; results[2]=true; }
+	else {results[2]=false}
+	if(answers[3]=="goldenrod"){ score++; results[3]=true; }
+	else {results[3]=false}
+	if(answers[4]=="aster"){ score++; results[4]=true; }
+	else {results[4]=false}
+
 	return score;
 }
 
@@ -54,12 +102,13 @@ function score(){
 
 var carousel = new Ext.Carousel({
 
-	height:400,
-	indicator:false,
-	// margin:50,
-	padding: '50',
+	height:calculateDesiredWidth(),
+	padding:calculateDesiredPadding(),
 	
-
+	indicator:false,
+	
+	// centered:true,
+	
     items: [
 				{
 					style: 'background-color: #fff',
@@ -71,7 +120,7 @@ var carousel = new Ext.Carousel({
 					items:[
 					
 				      new Ext.form.TextArea({
-				        html: '<body>Is goldenrod a major cause of hayfever?<br><br></body>'
+				        html: '<body>Question 1:<br>Is goldenrod a major cause of hayfever?<br></body>'
 				      }),
 					
 				      new Ext.form.Radio({
@@ -104,7 +153,7 @@ var carousel = new Ext.Carousel({
 					items:[
 					
 				      new Ext.form.TextArea({
-				        html: '<body>When do goldenrod and aster bloom?<br><br></body>'
+				        html: '<body>Question 2:<br>When do goldenrod and aster bloom?<br></body>'
 				      }),
 					
 				      new Ext.form.Radio({
@@ -138,7 +187,7 @@ var carousel = new Ext.Carousel({
 					items:[
 					
 				      new Ext.form.TextArea({
-				        html: '<body>What do bees and butterfly consume from these plants?<br><br></body>'
+				        html: '<body>Question 3:<br>What do bees and butterfly consume from these plants?<br></body>'
 				      }),
 					
 				      new Ext.form.Radio({
@@ -171,7 +220,7 @@ var carousel = new Ext.Carousel({
 					items:[
 					
 				      new Ext.form.TextArea({
-				        html: '<body>Which plant contains rubber?<br><br></body>'
+				        html: '<body>Question 4:<br>Which plant contains rubber?<br></body>'
 				      }),
 					
 				      new Ext.form.Radio({
@@ -205,7 +254,7 @@ var carousel = new Ext.Carousel({
 					items:[
 					
 				      new Ext.form.TextArea({
-				        html: '<body>Which plant derives its name from the Greek word for star?<br><br></body>'
+				        html: '<body>Question 5:<br>Which plant derives its name from the Greek word for star?<br></body>'
 				      }),
 					
 				      new Ext.form.Radio({
@@ -227,11 +276,37 @@ var carousel = new Ext.Carousel({
 					]
 					
 				},
+				
+				
+				
+				
+				{
+					style: 'background-color: #fff',
+					
+					items:[
+					
+				      resultsTextArea,
+					
+					]
+					
+				},
+				/**/
+				
 
     ]
 });
 
 
+
+var panel = new Ext.Panel({
+	layout:{
+		type:'vbox',
+		pack:'center',
+	},
+	items: [
+		carousel,
+	]
+});
 
 
 // componenet
@@ -243,9 +318,12 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 	dockedItems:[
 		{xtype:'Header', title:'Quiz'}
 	],
+	
+
 
 	items: [
 		carousel,
+		// panel,
 	]
 	
 });
