@@ -8,18 +8,19 @@ var results = [false, false, false, false, false];
 
 
 var resultsTextArea = new Ext.form.TextArea({
-				        html: ""
-				      })
+				        html: "You have not answered any questions.",
+				      });
 
 // methods
 
 
-function calculateDesiredWidth() {
-    var viewWidth = Ext.Element.getViewportWidth();
+function calculateDesiredHeight() {
     var viewHeight = Ext.Element.getViewportHeight();
+    // alert(viewHeight);
     var desiredHeight = viewHeight-100;
 	if(desiredHeight > 312) desiredHeight = 312;
-    return desiredHeight;
+    // return desiredHeight;
+    return 312;
 };
 
 
@@ -33,30 +34,60 @@ function calculateDesiredPadding() {
 
 
 
-function nextQuestion(e){
+function radioChecked(e){
+		
+	if(e.name=="radiogroup1") answers[0] = e.label;
+	if(e.name=="radiogroup2") answers[1] = e.label;
+	if(e.name=="radiogroup3") answers[2] = e.label;
+	if(e.name=="radiogroup4") answers[3] = e.label;
+	if(e.name=="radiogroup5") answers[4] = e.label;
+	
+	
+	updateResults();
+	
+	window.setTimeout(nextSlide,300);
+	
+}
+
+
+function nextSlide(){
 	var slideNum = carousel.getActiveIndex();
 	slideNum++;
 	carousel.setActiveItem(slideNum);
 }
 
 
-function submit(e){
-		
-	var slideNum = carousel.getActiveIndex();
-	slideNum++;
-	carousel.setActiveItem(slideNum);
+
+
+
+function updateResults(){
 	
-	resultsString = "Your score is " + score() + " / 5.<br>";
+	var score = 0;
 	
-	var arLen = results.length;
-	for ( var i=0; i<arLen; i++ ){
+	var numQuestions = results.length;
+	
+	if(answers[0]=="no"){ score++; results[0]=true; }
+	else {results[0]=false;}
+	if(answers[1]=="late summer/fall"){ score++; results[1]=true; }
+	else {results[1]=false;}
+	if(answers[2]=="nectar"){ score++; results[2]=true; }
+	else {results[2]=false;}
+	if(answers[3]=="goldenrod"){ score++; results[3]=true; }
+	else {results[3]=false;}
+	if(answers[4]=="aster"){ score++; results[4]=true; }
+	else {results[4]=false;}
+	
+	resultsString = "Your score is " + score + " / 5.<br>";
+	
+	for ( var i=0; i<numQuestions; i++ ){
 		
 		var tempResult;
 		
 		if (results[i]== true){ tempResult = "correct";
-		} else tempResult = "incorrect";
+		} else {tempResult = "incorrect";}
+		if (answers[i] == "") {tempResult = "unanswered";}
 	
-		var tempString = "Answer " + (i+1) + " is " + tempResult + "<br>";
+		var tempString = "Question " + (i+1) + " is " + tempResult + "<br>";
 		
 		resultsString = resultsString + tempString;
 		
@@ -67,34 +98,8 @@ function submit(e){
 }
 
 
-function radioChecked(e){
-		
-	if(e.name=="radiogroup1") answers[0] = e.label;
-	if(e.name=="radiogroup2") answers[1] = e.label;
-	if(e.name=="radiogroup3") answers[2] = e.label;
-	if(e.name=="radiogroup4") answers[3] = e.label;
-	if(e.name=="radiogroup5") answers[4] = e.label;
-	
-}
 
 
-function score(){
-
-	var score = 0;
-	
-	if(answers[0]=="no"){ score++; results[0]=true; }
-	else {results[0]=false}
-	if(answers[1]=="late summer/fall"){ score++; results[1]=true; }
-	else {results[1]=false}
-	if(answers[2]=="nectar"){ score++; results[2]=true; }
-	else {results[2]=false}
-	if(answers[3]=="goldenrod"){ score++; results[3]=true; }
-	else {results[3]=false}
-	if(answers[4]=="aster"){ score++; results[4]=true; }
-	else {results[4]=false}
-
-	return score;
-}
 
 
 
@@ -102,21 +107,20 @@ function score(){
 
 var carousel = new Ext.Carousel({
 
-	height:calculateDesiredWidth(),
+	height:calculateDesiredHeight(),
 	padding:calculateDesiredPadding(),
 	
 	indicator:false,
 	
+	cardSwitchAnimation:"slide",
+	
 	// centered:true,
 	
     items: [
+    			
 				{
 					style: 'background-color: #fff',
-					
-					dockedItems:[
-						{xtype:'button', dock:'bottom', text:'next', handler:nextQuestion}
-					],
-					
+
 					items:[
 					
 				      new Ext.form.TextArea({
@@ -145,10 +149,6 @@ var carousel = new Ext.Carousel({
 				
 				{
 					style: 'background-color: #fff',
-					
-					dockedItems:[
-						{xtype:'button', dock:'bottom', text:'next', handler:nextQuestion}
-					],
 					
 					items:[
 					
@@ -180,10 +180,6 @@ var carousel = new Ext.Carousel({
 				{
 					style: 'background-color: #fff',
 					
-					dockedItems:[
-						{xtype:'button', dock:'bottom', text:'next', handler:nextQuestion}
-					],
-					
 					items:[
 					
 				      new Ext.form.TextArea({
@@ -212,10 +208,6 @@ var carousel = new Ext.Carousel({
 				
 				{
 					style: 'background-color: #fff',
-					
-					dockedItems:[
-						{xtype:'button', dock:'bottom', text:'next', handler:nextQuestion}
-					],
 					
 					items:[
 					
@@ -246,10 +238,6 @@ var carousel = new Ext.Carousel({
 				
 				{
 					style: 'background-color: #fff',
-					
-					dockedItems:[
-						{xtype:'button', dock:'bottom', text:'submit', handler:submit}
-					],
 					
 					items:[
 					
@@ -290,23 +278,12 @@ var carousel = new Ext.Carousel({
 					]
 					
 				},
-				/**/
 				
-
+		
     ]
 });
 
 
-
-var panel = new Ext.Panel({
-	layout:{
-		type:'vbox',
-		pack:'center',
-	},
-	items: [
-		carousel,
-	]
-});
 
 
 // componenet
@@ -323,9 +300,8 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 
 	items: [
 		carousel,
-		// panel,
 	]
 	
 });
 
-Ext.reg("QuizCard", app.views.QuizCard);
+Ext.reg("QuizCard", app.views.QuizCard);s
