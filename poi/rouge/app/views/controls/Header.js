@@ -15,8 +15,16 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						type:'hbox',
 					},
 					items:[
-						{xtype:'button', text:'Map', ui:'action-small'},
+						{
+							xtype:'button',
+							text:'Map', 
+							ui:'action-small',
+							handler: function(){
+								app.views.viewport.setActiveItem(2, {type:'cube', direction:'right'});
+							}
+						},
 						{xtype:'spacer'},
+						/*
 						{width:16, height:16, cls:'poi_visited'},
 						{width:16, height:16, cls:'poi_not_visited'},
 						{width:16, height:16, cls:'poi_visited'},
@@ -24,10 +32,44 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						{width:16, height:16, cls:'poi_not_visited'},
 						{width:10},
 						{html:'75 pts.'},
+						*/
+						{
+							cls: 'gamification',
+							width:155,
+							height:26,
+							listeners:{
+								el:{
+									tap:function(){this.showGamificationTip()},
+									scope:this
+								},
+							},
+						},
+						
 						{width:10}
 					]
 				}
-            ]
+            ],
+			
+			showGamificationTip: function() {
+				if (!this.popup) {
+					this.popup = new Ext.Panel({
+						floating: true,
+						modal: true,
+						centered: true,
+						width: 300,
+						height: 200,
+						styleHtmlContent: true,
+						scroll: 'vertical',
+						html: '<p>Soon you will be able to earn points by the visiting points of interest and completing their quizzes!</p>',
+						dockedItems: [{
+							dock: 'top',
+							xtype: 'toolbar',
+							title: 'Coming Soon'
+						}]
+						});
+				}
+				this.popup.show('pop');
+			}
         });
 
         app.views.controls.Header.superclass.initComponent.apply(this, arguments);

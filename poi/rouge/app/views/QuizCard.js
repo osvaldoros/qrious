@@ -304,4 +304,4 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 	
 });
 
-Ext.reg("QuizCard", app.views.QuizCard);s
+Ext.reg("QuizCard", app.views.QuizCard);

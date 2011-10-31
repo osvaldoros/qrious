@@ -85,5 +85,16 @@
 }
 
 
+.mapImage{
+	background-image: url('/poi/rouge/images/map.jpg');
+}
+
+.gamification{
+	background-repeat:no-repeat;
+	background-size:auto;
+	background-image: url('/poi/rouge/images/gamification.png');
+}
+
+
 
 

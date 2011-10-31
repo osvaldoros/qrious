@@ -1,11 +1,23 @@
+function buildImage(name){
+	return 	{
+		items: [
+			{
+				cls: 'img ' + name,
+				width: '96%',
+				height: '96%',
+				x:'2%'
+			}
+		]
+	}
+}
 
-var images = [
-	{ cls: 'img img1'},
-	{ cls: 'img img2'},
-	{ cls: 'img img3'},
-	{ cls: 'img img4'},
-	{ cls: 'img img5'},
-	{ cls: 'img img6'}
+var images = [ 
+	buildImage('img1'),
+	buildImage('img2'),
+	buildImage('img3'),
+	buildImage('img4'),
+	buildImage('img5'),
+	buildImage('img6')
 ];
 
 app.views.Gallery = Ext.extend(Ext.Panel, {
@@ -30,21 +42,22 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 		}
 	],
 	
-	initComponent: function() {
-        Ext.apply(this, {
-			
-			items:[
-					new Ext.Carousel({
-						id:'imageCarousel',
-						width: '100%',
-						height:'100%',
-						items:images
-					})
-				],
-        });
+	
+	afterRender:function(){
+		app.views.Gallery.superclass.afterRender.call(this);
 		
-
-        app.views.Gallery.superclass.initComponent.apply(this, arguments);
+		// monitor pinch events
+		this.mon(this.el, {
+            pinch: this.handlePinch,
+            pinchstart: this.handlePinch,
+            pinchend: this.handlePinch,
+			scope: this
+		});
+    },
+	
+	// TODO, zoom the image according to the distance in the pinch using the css scale properties
+	handlePinch: function(e) {
+        console.log(e);
     },
 	
 	selectImageByIndex:function(index){
@@ -58,12 +71,14 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 	buildGallery:function(width, height, index){
 		if(!this.hidden){
 			
-			if(typeof(index) === 'undefined'){
-				var oldCarousel = this.getComponent('imageCarousel');
-				index = oldCarousel.getActiveIndex();
+			var oldCarousel = this.getComponent('imageCarousel');
+			if (typeof(oldCarousel) !== 'undefined') {
+				if(typeof(index) === 'undefined'){
+					index = oldCarousel.getActiveIndex();
+				}
+				this.remove('imageCarousel');
 			}
 			
-			this.remove('imageCarousel');
 			this.add(new Ext.Carousel({
 				id:'imageCarousel',
 				width: width,

@@ -18,7 +18,8 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 				{xtype:'QuizCard'},
 			]
 		}),
-		{xtype:"Gallery", id:'gallery'}
+		{xtype:"Gallery", id:'gallery'},
+		{xtype:"Map", id:'map'}
 	]
 	
 
