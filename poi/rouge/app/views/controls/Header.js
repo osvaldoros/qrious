@@ -15,6 +15,8 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						type:'hbox',
 					},
 					items:[
+					       
+					    /* 
 						{
 							xtype:'button',
 							text:'Map', 
@@ -23,6 +25,9 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 								app.views.viewport.setActiveItem(2, {type:'cube', direction:'right'});
 							}
 						},
+						*/
+					    // {xtype:'spacer'},
+						{html:'Asters and Goldenrod'},
 						{xtype:'spacer'},
 						/*
 						{width:16, height:16, cls:'poi_visited'},
@@ -31,12 +36,12 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						{width:16, height:16, cls:'poi_not_visited'},
 						{width:16, height:16, cls:'poi_not_visited'},
 						{width:10},
-						{html:'75 pts.'},
+						
 						*/
 						{
 							cls: 'gamification',
-							width:155,
-							height:26,
+							width:72,
+							height:18,
 							listeners:{
 								el:{
 									tap:function(){this.showGamificationTip()},
@@ -60,7 +65,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						height: 200,
 						styleHtmlContent: true,
 						scroll: 'vertical',
-						html: '<p>Soon you will be able to earn points by the visiting points of interest and completing their quizzes!</p>',
+						html: '<p>The next release will include a "game" capability that will allow you to earn points by visiting each of the Points of Interest along the trail and completing the quizzes.</p>',
 						dockedItems: [{
 							dock: 'top',
 							xtype: 'toolbar',

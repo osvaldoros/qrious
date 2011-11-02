@@ -16,10 +16,11 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 				{xtype:'PhotosCard'},
 				{xtype:'InfoCard'},
 				{xtype:'QuizCard'},
+				{xtype:'MapCard'},
 			]
 		}),
 		{xtype:"Gallery", id:'gallery'},
-		{xtype:"Map", id:'map'}
+		// {xtype:"Map", id:'map'}
 	]
 	
 
