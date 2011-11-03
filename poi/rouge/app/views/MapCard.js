@@ -1,13 +1,11 @@
 app.views.MapCard = Ext.extend(Ext.Panel, {
 	title: "Map",
-	iconCls: "quiz",
+	iconCls: "map",
 	
 	dockedItems:[
 		{xtype:'Header', title:'Map'}
 	],
 	
-
-
 	items: [
 			{
 				height:'100%',

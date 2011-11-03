@@ -16,8 +16,7 @@ var images = [
 	buildImage('img2'),
 	buildImage('img3'),
 	buildImage('img4'),
-	buildImage('img5'),
-	buildImage('img6')
+	buildImage('img5')
 ];
 
 app.views.Gallery = Ext.extend(Ext.Panel, {

@@ -28,7 +28,6 @@
 					{width:40, height:40, cls: 'thumb3', listeners:{body:{tap:function(event){ switchToGallery(2)	}}}, id:'thumb3'},
 					{width:40, height:40, cls: 'thumb4', listeners:{body:{tap:function(event){ switchToGallery(3)	}}}, id:'thumb4'},
 					{width:40, height:40, cls: 'thumb5', listeners:{body:{tap:function(event){ switchToGallery(4)	}}}, id:'thumb5'},
-					{width:40, height:40, cls: 'thumb6', listeners:{body:{tap:function(event){ switchToGallery(5)	}}}, id:'thumb6'}
 				]
 			}
 		]

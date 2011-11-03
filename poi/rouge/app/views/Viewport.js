@@ -4,6 +4,8 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 	cardSwitchAnimation:'cube',
 	items:[
 		new Ext.TabPanel({
+			id:'mainTabs',
+			activeItem:1,
 			tabBar:{
 				dock:'bottom',
 				layout:{
@@ -12,16 +14,24 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 			},
 			
 			items: [
+				{xtype:'MapCard'},
 				{xtype:'VideosCard'},
 				{xtype:'PhotosCard'},
 				{xtype:'InfoCard'},
 				{xtype:'QuizCard'},
-				{xtype:'MapCard'},
 			]
 		}),
 		{xtype:"Gallery", id:'gallery'},
 		// {xtype:"Map", id:'map'}
 	]
-	
+	/*
+	,
+	afterRender:function(){
+		console.log('afterRender')
+		var mainTabs = this.getComponent('mainTabs');
+		console.log(mainTabs)
+		mainTabs.setActiveItem(1);
+	}
+	*/
 
 });
