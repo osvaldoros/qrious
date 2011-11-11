@@ -1,6 +1,6 @@
 app.views.controls = {};
 app.views.controls.Header = Ext.extend(Ext.Panel, {
-	style:'background-color:#AAAAAA',
+	style:'background-color:#1e2e40',
 	height:30,
 	id:'toolbar',
 	
@@ -9,8 +9,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 			
             items: [
 				{
-					y:5,
-					x:5,
+
 					layout:{
 						type:'hbox',
 					},
@@ -26,8 +25,11 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 							}
 						},
 						*/
+						
+						
+						
 					    // {xtype:'spacer'},
-						{html:'Asters and Goldenrod'},
+						{y:5, x:5, html:'<p style="color:#ffffff;">Asters and Goldenrod</p>'},
 						{xtype:'spacer'},
 						/*
 						{width:16, height:16, cls:'poi_visited'},
@@ -40,8 +42,8 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						*/
 						{
 							cls: 'gamification',
-							width:72,
-							height:18,
+							width:60,
+							height:30,
 							listeners:{
 								el:{
 									tap:function(){this.showGamificationTip()},
