@@ -24,7 +24,7 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 	monitorOrientation: true,
 	dockedItems:[
 		{
-			style:'background-color:#AAAAAA;',
+			style:'background-color:#1e2e40;',
 			layout:'hbox',
 			height:30,
 			items:[
