@@ -23,22 +23,6 @@ var videos = new Ext.data.Store({
 		]
 	});
 
-var pnl = new Ext.DataView({
-		title : 'Video',
-		store : videos,
-		tpl : vidTmp,
-		itemSelector : '.container',
-		listeners : {
-			itemtap : function (view, index, el, e) {
-				rec = videos.getAt(index);
-				video = document.getElementById('video' + rec.data.id);
-				video.play();
-				
-			}
-		},
-		fullscreen : true
-	})
-
 
 var panel = new Ext.Panel({
     width: 300,
