@@ -29,7 +29,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						
 						
 					    // {xtype:'spacer'},
-						{y:5, x:5, html:'<p style="color:#ffffff;">Asters and Goldenrod</p>'},
+						{y:5, x:5, html:'<p style="color:#ffffff;">Fall Wildflowers</p>'},
 						{xtype:'spacer'},
 						/*
 						{width:16, height:16, cls:'poi_visited'},
