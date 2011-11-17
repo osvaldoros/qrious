@@ -1,11 +1,4 @@
 
-// variables
-
-var answers = ["", "", "", "", ""];
-
-var results = [false, false, false, false, false];
-
-
 
 var resultsTextArea = new Ext.form.TextArea({
 				        html: "You have not answered any questions.",
@@ -34,256 +27,6 @@ function calculateDesiredPadding() {
 
 
 
-function radioChecked(e){
-		
-	if(e.name=="radiogroup1") answers[0] = e.label;
-	if(e.name=="radiogroup2") answers[1] = e.label;
-	if(e.name=="radiogroup3") answers[2] = e.label;
-	if(e.name=="radiogroup4") answers[3] = e.label;
-	if(e.name=="radiogroup5") answers[4] = e.label;
-	
-	
-	updateResults();
-	
-	window.setTimeout(nextSlide,300);
-	
-}
-
-
-function nextSlide(){
-	var slideNum = carousel.getActiveIndex();
-	slideNum++;
-	carousel.setActiveItem(slideNum);
-}
-
-
-
-
-
-function updateResults(){
-	
-	var score = 0;
-	
-	var numQuestions = results.length;
-	
-	if(answers[0]=="no"){ score++; results[0]=true; }
-	else {results[0]=false;}
-	if(answers[1]=="late summer/fall"){ score++; results[1]=true; }
-	else {results[1]=false;}
-	if(answers[2]=="nectar"){ score++; results[2]=true; }
-	else {results[2]=false;}
-	if(answers[3]=="goldenrod"){ score++; results[3]=true; }
-	else {results[3]=false;}
-	if(answers[4]=="aster"){ score++; results[4]=true; }
-	else {results[4]=false;}
-	
-	resultsString = "Your score is " + score + " / 5.<br>";
-	
-	for ( var i=0; i<numQuestions; i++ ){
-		
-		var tempResult;
-		
-		if (results[i]== true){ tempResult = "correct";
-		} else {tempResult = "incorrect";}
-		if (answers[i] == "") {tempResult = "unanswered";}
-	
-		var tempString = "Question " + (i+1) + " is " + tempResult + "<br>";
-		
-		resultsString = resultsString + tempString;
-		
-	}
-	
-	resultsTextArea.update(resultsString);
-			
-}
-
-
-
-
-
-
-
-// carousel
-
-var carousel = new Ext.Carousel({
-
-	height:calculateDesiredHeight(),
-	padding:calculateDesiredPadding(),
-	
-	indicator:false,
-	
-	cardSwitchAnimation:"slide",
-	
-	// centered:true,
-	
-    items: [
-    			
-				{
-					style: 'background-color: #fff',
-
-					items:[
-					
-				      new Ext.form.TextArea({
-				        html: '<body>Question 1:<br>Is goldenrod a major cause of hayfever?<br></body>'
-				      }),
-					
-				      new Ext.form.Radio({
-				        name: 'radiogroup1',
-				        label: 'yes',
-						listeners: {
-							check:radioChecked,
-						},
-				      }), 
-				      
-				      new Ext.form.Radio({
-				        name: 'radiogroup1',
-				        label: 'no',
-						listeners: {
-							check:radioChecked,
-						},
-				      }),
-					
-					]
-					
-				},
-				
-				{
-					style: 'background-color: #fff',
-					
-					items:[
-					
-				      new Ext.form.TextArea({
-				        html: '<body>Question 2:<br>When do goldenrod and aster bloom?<br></body>'
-				      }),
-					
-				      new Ext.form.Radio({
-				        name: 'radiogroup2',
-				        label: 'spring',
-						listeners: {
-							check:radioChecked,
-						},
-				      }), 
-				      
-				      new Ext.form.Radio({
-				        name: 'radiogroup2',
-				        label: 'late summer/fall',
-						listeners: {
-							check:radioChecked,
-						},
-				      }),
-					
-					]
-					
-				},
-				
-				
-				{
-					style: 'background-color: #fff',
-					
-					items:[
-					
-				      new Ext.form.TextArea({
-				        html: '<body>Question 3:<br>What do bees and butterfly consume from these plants?<br></body>'
-				      }),
-					
-				      new Ext.form.Radio({
-				        name: 'radiogroup3',
-				        label: 'nectar',
-						listeners: {
-							check:radioChecked,
-						},
-				      }), 
-				      
-				      new Ext.form.Radio({
-				        name: 'radiogroup3',
-				        label: 'seeds',
-						listeners: {
-							check:radioChecked,
-						},
-				      }),
-					
-					]
-					
-				},
-				
-				{
-					style: 'background-color: #fff',
-					
-					items:[
-					
-				      new Ext.form.TextArea({
-				        html: '<body>Question 4:<br>Which plant contains rubber?<br></body>'
-				      }),
-					
-				      new Ext.form.Radio({
-				        name: 'radiogroup4',
-				        label: 'aster',
-						listeners: {
-							check:radioChecked,
-						},
-				      }), 
-				      
-				      new Ext.form.Radio({
-				        name: 'radiogroup4',
-				        label: 'goldenrod',
-						listeners: {
-							check:radioChecked,
-						},
-				      }),
-					
-					]
-					
-				},
-				
-				
-				{
-					style: 'background-color: #fff',
-					
-					items:[
-					
-				      new Ext.form.TextArea({
-				        html: '<body>Question 5:<br>Which plant derives its name from the Greek word for star?<br></body>'
-				      }),
-					
-				      new Ext.form.Radio({
-				        name: 'radiogroup5',
-				        label: 'aster',
-						listeners: {
-							check:radioChecked,
-						},
-				      }), 
-				      
-				      new Ext.form.Radio({
-				        name: 'radiogroup5',
-				        label: 'goldenrod',
-						listeners: {
-							check:radioChecked,
-						},
-				      }),
-					
-					]
-					
-				},
-				
-				
-				
-				
-				{
-					style: 'background-color: #fff',
-					
-					items:[
-					
-				      resultsTextArea,
-					
-					]
-					
-				},
-				
-		
-    ]
-});
-
-
 
 
 // componenet
@@ -292,15 +35,141 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 	title: "Quiz",
 	iconCls: "quiz",
 	
+	answers: ["", "", "", "", ""],
+	results: [false, false, false, false, false],
+	
 	dockedItems:[
 		{xtype:'Header', title:'Quiz'}
 	],
 	
+	initComponent: function() {
+		
+		var owner = this;
+		Ext.Ajax.request({
+		    url: 'assets/quiz.json',
+		    success: function(response, opts) {
+				owner.addQuiz(response);
+		        owner.setLoading(false);
+		    }
+		});
+		
+		this.setLoading(true, true);
+		app.views.QuizCard.superclass.initComponent.apply(this, arguments);
+	},
+	
+	radioChecked: function (e){
+			
+		if(e.name=="radiogroup0") this.answers[0] = e.label;
+		if(e.name=="radiogroup1") this.answers[1] = e.label;
+		if(e.name=="radiogroup2") this.answers[2] = e.label;
+		if(e.name=="radiogroup3") this.answers[3] = e.label;
+		if(e.name=="radiogroup4") this.answers[4] = e.label;
+		
+		this.updateResults();
+		
+		var owner = this;
+		window.setTimeout(function(){owner.nextSlide()},300);
+		
+	},
+	
+	
+	updateResults: function (){
+		
+		var score = 0;
+		var numQuestions = this.results.length;
+		var tempResult;
+		var tempString = "";
+		
+		for(var r=0;r<numQuestions;r++){
+			console.log(this.answers[r] + " vs "+this.correctAnswers[r])
+			if(this.answers[r]==this.correctAnswers[r]){ 
+				score++; 
+				this.results[r]=true; 
+				tempResult = "correct";
+			}else {
+				this.results[r]=false;
+				tempResult = "incorrect";
+			}
+			
+			if (this.answers[r] == "") {tempResult = "unanswered";}
+			tempString += "Question " + (r+1) + " is " + tempResult + "<br>";
+		}
+		
+		resultsString = "Your score is " + score + " / 5.<br>";
+		resultsString = resultsString + tempString;
+		
+		resultsTextArea.update(resultsString);
+				
+	},
+	
+	nextSlide: function(){
+		var carousel = this.getComponent('carousel');
+		var slideNum = carousel.getActiveIndex();
+		slideNum++;
+		carousel.setActiveItem(slideNum);
+	},
+	
+	addQuiz:function(response){
+		var questions = JSON.parse(response.responseText);
+		var questionsArray = questions.data;
+		
+		var items = []
+		this.correctAnswers = [];
+		for(var i=0; i<questionsArray.length;i++){
+			var currentQuestion = questionsArray[i];
+			items.push({
+				style: 'background-color: #fff',
 
-
-	items: [
-		carousel,
-	]
+				items:[
+				
+			      new Ext.form.TextArea({
+			        html: currentQuestion.question
+			      }),
+				
+			      new Ext.form.Radio({
+			        name: 'radiogroup' + i,
+			        label: currentQuestion.answer1,
+					listeners: {
+						check:this.radioChecked, scope:this
+					},
+			      }), 
+			      
+			      new Ext.form.Radio({
+			        name: 'radiogroup' + i,
+			        label: currentQuestion.answer2,
+					listeners: {
+						check:this.radioChecked, scope:this
+					},
+			      }),
+				
+				]
+				
+			})
+			
+			this.correctAnswers.push(currentQuestion.correct);
+			
+		}
+		
+		
+		items.push({
+			style: 'background-color:#fff',
+			items:[
+				resultsTextArea
+			]			
+		});
+		
+		var carousel = new Ext.Carousel({
+			height:calculateDesiredHeight(),
+			padding:calculateDesiredPadding(),
+			indicator:false,
+			cardSwitchAnimation:"slide",
+		    items: items,
+			id:'carousel'
+		});
+		
+		this.add(carousel)
+		
+	}
 	
 });
 

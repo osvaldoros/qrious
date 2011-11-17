@@ -5,7 +5,6 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 	items:[
 		new Ext.TabPanel({
 			id:'mainTabs',
-			activeItem:1,
 			tabBar:{
 				dock:'bottom',
 				layout:{
@@ -14,11 +13,11 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 			},
 			
 			items: [
-				{xtype:'MapCard'},
 				{xtype:'VideosCard'},
 				{xtype:'PhotosCard'},
 				{xtype:'InfoCard'},
 				{xtype:'QuizCard'},
+				{xtype:'MapCard'},
 			]
 		}),
 		{xtype:"Gallery", id:'gallery'},

@@ -1,9 +1,11 @@
-function buildImage(name, title){
+function buildImage(url, title){
+	
 	return 	{
 		items: [
 			{
 				title: title,
-				cls: 'img ' + name,
+				cls: 'img ',
+				style: "background-image: url('" + url +"');",
 				width: '96%',
 				height: '96%',
 				x:'2%'
@@ -11,14 +13,6 @@ function buildImage(name, title){
 		]
 	}
 }
-
-var images = [ 
-	buildImage('img1', 'viceroys and aster'),
-	buildImage('img2', 'bee and aster'),
-	buildImage('img3', 'bee and aster'),
-	buildImage('img4', 'goldenrod'),
-	buildImage('img5', 'goldenrod and aster')
-];
 
 app.views.Gallery = Ext.extend(Ext.Panel, {
 	style:'background-color:#000000;',
@@ -46,6 +40,38 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 		}
 	],
 	
+	initComponent: function() {
+		var owner = this;
+		Ext.Ajax.request({
+		    url: 'assets/images.json',
+		    success: function(response, opts) {
+				owner.addImages(response);
+		        owner.setLoading(false);
+		    }
+		});
+		
+		this.setLoading(true, true);
+		app.views.Gallery.superclass.initComponent.apply(this, arguments);
+	},
+	
+	addImages:function(response){
+		var imagesRaw = JSON.parse(response.responseText);
+		var imagesArray = imagesRaw.data;
+		
+		this.images = [];
+		for (var i = 0; i < imagesArray.length; i++) {
+			var currentImage = imagesArray[i];
+			this.images.push(buildImage(currentImage.url, currentImage.title));
+		}
+		
+		this.dataLoaded = true;
+		
+		if(this.pendingBuild){
+			this.buildGallery(this.pendingBuild.width, this.pendingBuild.height, this.pendingBuild.index);
+			this.pendingBuild = null;
+		}
+		
+	},
 	
 	afterRender:function(){
 		app.views.Gallery.superclass.afterRender.call(this);
@@ -105,6 +131,15 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 	},
 	
 	buildGallery:function(width, height, index){
+		if(!this.dataLoaded){
+			this.pendingBuild = {
+				width:width,
+				height:height,
+				index:index
+			}
+			return;
+		}
+		
 		if(!this.hidden){
 			
 			var oldCarousel = this.getComponent('imageCarousel');
@@ -120,11 +155,13 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 				id:'imageCarousel',
 				width: width,
 				height:height,
-				items:images,
+				items:this.images,
 				listeners: {
 					cardswitch:this.updateTitle
 				}
 			}));
+			
+			
 			this.doLayout();
 			this.updateTitle();
 			this.items.map['imageCarousel'].setActiveItem(index);
