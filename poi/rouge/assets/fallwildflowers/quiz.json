@@ -1,0 +1,9 @@
+{
+    "data":[
+        { "question" : "<body>Question 1:<br>Is goldenrod a major cause of hayfever?<br></body>", "answer1":"yes", "answer2":"no", "correct":"no" },
+        { "question" : "<body>Question 2:<br>When do goldenrod and aster bloom?<br></body>", "answer1":"spring", "answer2":"late summer/fall", "correct":"late summer/fall" },
+        { "question" : "<body>Question 3:<br>What do bees and butterfly consume from these plants?<br></body>", "answer1":"nectar", "answer2":"seeds", "correct":"nectar" },
+        { "question" : "<body>Question 4:<br>Which plant contains rubber?<br></body>", "answer1":"aster", "answer2":"goldenrod", "correct":"goldenrod" },
+        { "question" : "<body>Question 5:<br>Which plant derives its name from the Greek word for star?<br></body>", "answer1":"aster", "answer2":"goldenrod", "correct":"aster" }
+    ]                                                      
+}
