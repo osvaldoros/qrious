@@ -21,8 +21,11 @@
 }
 
 .thumb{
+	background-repeat:no-repeat;
+	background-size:contain;
 	margin-left:5px;
 	margin-right:5px;
+	border: 5px solid #ffffff;
 }
 
 .img{
