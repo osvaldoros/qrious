@@ -9,7 +9,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 			
             items: [
 				{
-
+					id:'containerBox',
 					layout:{
 						type:'hbox',
 					},
@@ -29,7 +29,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						
 						
 					    // {xtype:'spacer'},
-						{y:5, x:5, html:'<p style="color:#ffffff;">Fall Wildflowers</p>'},
+						{y:5, x:5, id:'titlePanel', tpl:'<p style="color:#ffffff;">{title}</p>'},
 						{xtype:'spacer'},
 						/*
 						{width:16, height:16, cls:'poi_visited'},
@@ -76,8 +76,33 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 						});
 				}
 				this.popup.show('pop');
+			},
+			
+			addTitle:function(response){
+				var titleData = JSON.parse(response.responseText);
+				var titleArray = titleData.data;
+				
+				var firstTitle = titleArray[0];
+				
+				var containerBox = this.getComponent('containerBox');
+				var titlePanel = containerBox.getComponent('titlePanel');
+				titlePanel.update(firstTitle);
+				app.POITitle = firstTitle;
+				
 			}
+			
         });
+		
+		var owner = this;
+		Ext.Ajax.request({
+		    url: 'assets/title.json',
+		    success: function(response, opts) {
+				owner.addTitle(response);
+		        owner.setLoading(false);
+		    }
+		});
+		
+		this.setLoading(true, true);
 
         app.views.controls.Header.superclass.initComponent.apply(this, arguments);
     }
