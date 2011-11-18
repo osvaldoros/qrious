@@ -1,0 +1,11 @@
+{
+    "data":[
+        { "question" : "<body>Question 1:<br>How large is the Beare Wetland?<br></body>", "answer1":"1 hectare", "answer2":"5 hecares", "correct":"5 hecares" },
+        { "question" : "<body>Question 2:<br>Why do the ponds vary in size, shape and depth?<br></body>", "answer1":"to increase habitat diversity", "answer2":"because it was too hard to make them all the same", "correct":"to increase habitat diversity" },
+        { "question" : "<body>Question 3:<br>How many tonnes of garbage are in the Beare Landfill?<br></body>", "answer1":"between 2 and 5 million", "answer2":"10 million", "correct":"10 million" },
+        { "question" : "<body>Question 4:<br>How many ponds are there in the Beare Wetland?<br></body>", "answer1":"less than 20", "answer2":"more than 40", "correct":"more than 40" },
+        { "question" : "<body>Question 5:<br>How many native tree, shrub and wildflower species are there in the Beare Wetland?<br></body>", "answer1":"less than 50", "answer2":"more than 100", "correct":"more than 100" }
+    ]                                                      
+}
+
+
