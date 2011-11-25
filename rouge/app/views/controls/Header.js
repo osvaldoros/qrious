@@ -95,7 +95,7 @@ app.views.controls.Header = Ext.extend(Ext.Panel, {
 		
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/title.json',
+		    url: 'json/title.json',
 		    success: function(response, opts) {
 				owner.addTitle(response);
 		        owner.setLoading(false);

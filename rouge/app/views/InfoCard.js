@@ -13,7 +13,7 @@ app.views.InfoCard = Ext.extend(Ext.Panel, {
 		
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/text.html',
+		    url: 'json/text.html',
 		    success: function(response, opts) {
 				owner.addContent(response);
 		        owner.setLoading(false);

@@ -44,7 +44,7 @@ app.views.VideosCard = Ext.extend(Ext.Panel, {
 		
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/videos.json',
+		    url: 'json/videos.json',
 		    success: function(response, opts) {
 				owner.addVideoPanel(response);
 		        owner.setLoading(false);

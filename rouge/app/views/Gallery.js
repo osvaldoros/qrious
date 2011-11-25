@@ -43,7 +43,7 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 	initComponent: function() {
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/images.json',
+		    url: 'json/images.json',
 		    success: function(response, opts) {
 				owner.addImages(response);
 		        owner.setLoading(false);

@@ -28,7 +28,7 @@
 			
 			var owner = this;
 			Ext.Ajax.request({
-			    url: 'assets/thumbs.json',
+			    url: 'json/thumbs.json',
 			    success: function(response, opts) {
 					owner.addThumbs(response);
 			        owner.setLoading(false);

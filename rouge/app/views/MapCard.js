@@ -18,7 +18,7 @@ app.views.MapCard = Ext.extend(Ext.Panel, {
 	initComponent: function() {
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/map.json',
+		    url: 'json/map.json',
 		    success: function(response, opts) {
 				owner.addMap(response);
 		        owner.setLoading(false);

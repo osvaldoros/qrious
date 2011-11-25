@@ -46,7 +46,7 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 		
 		var owner = this;
 		Ext.Ajax.request({
-		    url: 'assets/quiz.json',
+		    url: 'json/quiz.json',
 		    success: function(response, opts) {
 				owner.addQuiz(response);
 		        owner.setLoading(false);
