@@ -1,5 +1,6 @@
 {
     "data":[
-        { "poster": "assets/sumac/videos/sumac_poster.png", "url": "assets/sumac/videos/sumac.m4v", "id":"1"}
+        { "name": "First Nations traditional knowledge",  "poster": "assets/sumac/videos/sumac_poster.png", "url": "assets/sumac/videos/knowledge.m4v", "length":"1 min 5 sec", "id":"1"},
+        { "name": "Origins of the name Staghorn",  "poster": "assets/sumac/videos/origins_poster.png", "url": "assets/sumac/videos/origins.m4v", "length":"20 sec", "id":"2"}
     ] 
 }

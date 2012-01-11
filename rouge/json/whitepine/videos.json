@@ -1,5 +1,7 @@
 {
     "data":[
-        { "poster": "assets/whitepine/videos/rouge_white_poster.png", "url": "assets/whitepine/videos/white_pine.m4v", "id":"1"}
+        {"name": "History of the White Pine in Ontario", "poster": "assets/whitepine/videos/history.png", "url": "assets/whitepine/videos/whitePineHistory.m4v", "length":"23 sec", "id":"1"},
+        {"name": "Deforestation", "poster": "assets/whitepine/videos/deforestation2.png", "url": "assets/whitepine/videos/deforestation.m4v", "length":"34 sec", "id":"2"},
+        {"name": "Temagami and the Future", "poster": "assets/whitepine/videos/rouge_white_poster2.png", "url": "assets/whitepine/videos/future2.m4v", "length":"31 sec", "id":"3"}
     ] 
 }

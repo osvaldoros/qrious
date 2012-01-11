@@ -1,5 +1,8 @@
 {
-    "data":[
-        { "poster": "assets/fallwildflowers/videos/poster_aster_and_goldenrod.png", "url": "assets/fallwildflowers/videos/asters_and_goldenrod.m4v", "id":"1"}
-    ] 
+	"data":[
+	    {"name": "Fall Wildflowers",   "poster": "assets/fallwildflowers/videos/fallwildflowers.jpg", "url": "assets/fallwildflowers/videos/fallwildflowers.m4v", "length":"17 sec", "id": "1"},
+	    {"name": "Goldenrod",     "poster": "assets/fallwildflowers/videos/goldenrod.jpg", "url": "assets/fallwildflowers/videos/goldenrod.m4v", "length":"19 sec", "id": "2"},
+	    {"name": "New England Aster",      "poster": "assets/fallwildflowers/videos/asters.jpg", "url": "assets/fallwildflowers/videos/asters.m4v", "length":"11 sec", "id": "3"},
+	    {"name": "Wildflower planting",   "poster": "assets/fallwildflowers/videos/planting.jpg", "url": "assets/fallwildflowers/videos/planting.m4v", "length":"14 sec", "id": "4"}
+	]
 }

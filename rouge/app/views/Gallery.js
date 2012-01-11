@@ -87,7 +87,8 @@ app.views.Gallery = Ext.extend(Ext.Panel, {
 	
 	// TODO, zoom the image according to the distance in the pinch using the css scale properties
 	handlePinch: function(e) {
-        console.log(e);
+        // console.log(e);
+    	// alert(e);
     },
 	
 	selectImageByIndex:function(index){

@@ -109,7 +109,7 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 		carousel.setActiveItem(slideNum);
 	},
 	
-	addQuiz:function(response){
+	addQuiz: function(response){
 		var questions = JSON.parse(response.responseText);
 		var questionsArray = questions.data;
 		
@@ -129,6 +129,7 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 			      new Ext.form.Radio({
 			        name: 'radiogroup' + i,
 			        label: currentQuestion.answer1,
+			        labelWidth: '50%',
 					listeners: {
 						check:this.radioChecked, scope:this
 					},
@@ -137,6 +138,7 @@ app.views.QuizCard = Ext.extend(Ext.Panel, {
 			      new Ext.form.Radio({
 			        name: 'radiogroup' + i,
 			        label: currentQuestion.answer2,
+			        labelWidth: '50%',
 					listeners: {
 						check:this.radioChecked, scope:this
 					},

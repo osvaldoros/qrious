@@ -17,7 +17,7 @@ app.views.VideosCard = Ext.extend(Ext.Panel, {
 	
 	layout:{
 		type:'vbox',
-		pack:'center',
+		pack:'center'
 	},
 	
 	initComponent: function() {
@@ -36,7 +36,7 @@ app.views.VideosCard = Ext.extend(Ext.Panel, {
 								videoElem.play();
 							}
 						}
-					},
+					}
 				},
 				{xtype:'spacer'},
 			]

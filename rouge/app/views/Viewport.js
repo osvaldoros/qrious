@@ -13,7 +13,7 @@ app.views.Viewport = Ext.extend(Ext.Panel, {
 			},
 			
 			items: [
-				{xtype:'VideosCard'},
+				{xtype:'VideosCard2'},
 				{xtype:'PhotosCard'},
 				{xtype:'InfoCard'},
 				{xtype:'QuizCard'},
