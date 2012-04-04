@@ -1,0 +1,7 @@
+{
+    "data":[
+        { "name": "History of the Beare",  "poster": "assets/history/videos/history.png", "url": "assets/history/videos/History.m4v", "length":"35 sec", "id":"1"},
+        { "name": "Helping Nature",  "poster": "assets/history/videos/nature.png", "url": "assets/history/videos/nature.m4v", "length":"16 sec", "id":"2"},
+        { "name": "Visiting the Beare",  "poster": "assets/history/videos/visiting.png", "url": "assets/history/videos/visiting.m4v", "length":"25 sec", "id":"3"}
+    ] 
+}

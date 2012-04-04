@@ -1,0 +1,11 @@
+{
+    "data":[
+        { "question" : "<body>Question 1:<br>What vitamin does staghorn sumac contain?<br></body>", "answer1":"Vitamin C", "answer2":"Vitamin B12", "correct":"Vitamin C" },
+        { "question" : "<body>Question 2:<br>Where does the name staghorn come from?<br></body>", "answer1":"The branches feel like the velvet on a deer's antlers", "answer2":"The branches have sharp tips like an antler", "correct":"The branches feel like the velvet on a deer's antlers" },
+        { "question" : "<body>Question 3:<br>WWhen do the leaves of the plant turn red?<br></body>", "answer1":"Fall", "answer2":"They are red throughout the year", "correct":"Fall" },
+        { "question" : "<body>Question 4:<br>Why is the staghorn sumac an important food source for many birds and animals?<br></body>", "answer1":"Because the fruit can last throughout the winter", "answer2":"Because it tastes good", "correct":"Because the fruit can last throughout the winter" },
+        { "question" : "<body>Question 5:<br>Is the staghorn sumac found in northern Canada?<br></body>", "answer1":"Yes", "answer2":"No", "correct":"No" }
+    ]                                                      
+}
+
+

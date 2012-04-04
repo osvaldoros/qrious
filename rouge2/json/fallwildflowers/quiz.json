@@ -1,0 +1,9 @@
+{
+    "data":[
+        { "question" : "<body>Question 1:<br>Is goldenrod a major cause of hayfever?<br></body>", "answer1":"yes", "answer2":"no", "correct":"no" },
+        { "question" : "<body>Question 2:<br>New England Asters are:<br></body>", "answer1":"annual", "answer2":"perennial", "correct":"perennial" },
+        { "question" : "<body>Question 3:<br>What do bees and butterfly consume from these plants?<br></body>", "answer1":"nectar", "answer2":"seeds", "correct":"nectar" },
+        { "question" : "<body>Question 4:<br>Which plant contains rubber?<br></body>", "answer1":"aster", "answer2":"goldenrod", "correct":"goldenrod" },
+        { "question" : "<body>Question 5:<br>How many species of aster are native to Ontario?<br></body>", "answer1":"5 to 10", "answer2":"over 30", "correct":"over 30" }
+    ]                                                      
+}
